@@ -1,0 +1,311 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<div>
+  <header
+    class="grid grid-cols-main fixed top-0 left-0 right-0 bg-black bg-opacity-80 z-10"
+  >
+    <div
+      class="col-gutter"
+    >
+      <div
+        class="flex h-16 items-center justify-between"
+      >
+        <a
+          class="site-logo"
+          href="/"
+        >
+          <img
+            alt="Homepage"
+            height="26"
+            src="sub-logo.png"
+            width="190"
+          />
+        </a>
+        <nav
+          class="flex justify-end"
+        >
+          <div
+            class="lg:hidden flex items-center"
+          >
+            <div
+              aria-expanded="false"
+              class="hamburger-react"
+              role="button"
+              style="cursor: pointer; height: 48px; position: relative; transition: 0.4s cubic-bezier(0, 0, 0, 1); user-select: none; width: 48px; outline: none;"
+              tabindex="0"
+            >
+              <div
+                style="transition: 0.2s cubic-bezier(0, 0, 0, 1) 0.2s; transform: none;"
+              >
+                <div
+                  style="background: white; height: 2px; left: 12px; position: absolute; width: 24px; top: 16px; transition: 0.2s cubic-bezier(0, 0, 0, 1) 0s; transform: none;"
+                />
+              </div>
+              <div
+                style="transition: 0.2s cubic-bezier(0, 0, 0, 1); opacity: 1;"
+              >
+                <div
+                  style="background: white; height: 2px; left: 12px; position: absolute; width: 24px; top: 23px; transition: 0.2s cubic-bezier(0, 0, 0, 1);"
+                />
+              </div>
+              <div
+                style="transition: 0.2s cubic-bezier(0, 0, 0, 1) 0.2s; transform: none;"
+              >
+                <div
+                  style="background: white; height: 2px; left: 12px; position: absolute; width: 24px; top: 30px; transition: 0.2s cubic-bezier(0, 0, 0, 1) 0s; transform: none;"
+                />
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section
+      class="h-screen relative grid grid-cols-main items-center overflow-hidden"
+      id="home"
+    >
+      <div
+        class="absolute inset-0"
+        style="background-image: url(bg-stars.jpg); background-position: bottom; background-size: cover; transform: translateY(0%) translateZ(0);"
+      />
+      <h1
+        class="grid col-content text-white text-4xl md:text-6xl relative max-w-4xl pb-36"
+        style="transform: translateY(0%) translateZ(0);"
+      >
+        We are a creative group of people who design digital experiences.
+      </h1>
+      <div
+        class="absolute inset-0"
+        style="background-image: url(bg-trees.png); background-position: bottom; background-size: cover;"
+      />
+    </section>
+    <section
+      class="grid grid-cols-main bg-sky-600"
+      id="2"
+    >
+      <div
+        class="grid col-content py-32"
+      >
+        <div
+          class="flex flex-col items-center pb-8"
+          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+        >
+          <h1
+            class="font-bold text-lg uppercase pb-4 text-black"
+          >
+            Hello There
+          </h1>
+          <h2
+            class="text-center pb-8 text-5xl md:text-7xl text-white"
+          >
+            We are Space Dog
+          </h2>
+          <hr
+            class="w-1/2 border-t border-sky-300"
+          />
+        </div>
+        <div
+          class="flex flex-col items-center"
+          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+        >
+          <div
+            class="[&_p]:text-2xl [&_p]:leading-loose [&_p]:font-serif [&_p]:font-light [&_p]:text-gray-000 [&_p]:text-center"
+          >
+            <p>
+              Test
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="grid grid-cols-main bg-white"
+      id="3"
+    >
+      <div
+        class="grid col-content py-32"
+      >
+        <div
+          class="flex flex-col items-center pb-8"
+          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+        >
+          <h1
+            class="font-bold text-lg uppercase pb-4 text-black"
+          >
+            What We Do
+          </h1>
+          <h2
+            class="text-center pb-8 text-5xl md:text-7xl text-white"
+          >
+            We have everything you need to meet all your app and web development needs
+          </h2>
+          <hr
+            class="w-1/2 border-t border-sky-300"
+          />
+        </div>
+        <div
+          class="flex flex-col items-center"
+          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+        >
+          <div
+            class="flex flex-col pt-8 lg:grid lg:grid-cols-2 gap-16"
+          >
+            <div
+              class="grid md:grid-cols-services gap-12"
+            >
+              <div
+                class="before:content-appIcon text-center before:inline-block before:stroke-sky-600 before:w-20"
+              >
+                 
+              </div>
+              <div
+                class="text-center md:text-left [&_p]:text-gray-500 [&_h3]:text-2xl [&_h3]:pb-6 md:[&_h3]:pb-4"
+              >
+                <p>
+                  Test
+                </p>
+              </div>
+            </div>
+            <div
+              class="grid md:grid-cols-services gap-12"
+            >
+              <div
+                class="before:content-webIcon text-center before:inline-block before:stroke-sky-600 before:w-20"
+              >
+                 
+              </div>
+              <div
+                class="text-center md:text-left [&_p]:text-gray-500 [&_h3]:text-2xl [&_h3]:pb-6 md:[&_h3]:pb-4"
+              >
+                <p>
+                  Test
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="grid grid-cols-main bg-gray-700"
+      id="4"
+    >
+      <div
+        class="grid col-content py-32"
+      >
+        <div
+          class="flex flex-col items-center pb-8"
+          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+        >
+          <h1
+            class="font-bold text-lg uppercase pb-4 text-black"
+          >
+            Contact Us
+          </h1>
+          <h2
+            class="text-center pb-8 text-5xl md:text-7xl text-white"
+          >
+            Reach out for a new project or just say hello
+          </h2>
+          <hr
+            class="w-1/2 border-t border-sky-300"
+          />
+        </div>
+        <div
+          class="flex flex-col items-center"
+          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+        >
+          <div
+            class="text-left pt-4 w-full max-w-7xl"
+          >
+            <h3
+              class="text-white text-lg uppercase pb-2"
+            >
+              Send Us A Message
+            </h3>
+            <form
+              novalidate=""
+            >
+              <label
+                class="sr-only"
+                for="name"
+              >
+                name
+              </label>
+              <input
+                autocomplete="name"
+                class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-none focus:border-b focus:border-sky-600  h-20 mb-4 border-gray-200"
+                id="name"
+                name="name"
+                placeholder="Your name"
+              />
+              <label
+                class="sr-only"
+                for="email"
+              >
+                email
+              </label>
+              <input
+                autocomplete="email"
+                class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-none focus:border-b focus:border-sky-600  h-20 mb-10 border-gray-200"
+                id="email"
+                name="email"
+                placeholder="Your email"
+                type="email"
+              />
+              <label
+                class="sr-only"
+                for="message"
+              >
+                message
+              </label>
+              <textarea
+                class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-none focus:border-b focus:border-sky-600 pb-8 mb-8 border-gray-200"
+                id="message"
+                name="message"
+                placeholder="Your message"
+                rows="4"
+              />
+              <button
+                class="relative flex justify-center items-center w-full h-16 bg-sky-600 uppercase text-g text-white"
+              >
+                <div
+                  class="relative px-10"
+                >
+                  Submit
+                </div>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer
+    class="grid grid-cols-main"
+  >
+    <div
+      class="col-gutter flex flex-row flex-wrap py-8 justify-center gap-x-12 gap-y-4 sm:gap-x-24"
+    >
+      <p
+        class="text-gray-400 flex-none text-sm sm:text-base"
+      >
+        © Space Dog Studios
+      </p>
+      <p
+        class="text-gray-400 flex-none text-sm sm:text-base"
+      >
+        Design inspired by 
+        <a
+          href="https://www.colorlib.com/"
+        >
+          Colorlib
+        </a>
+      </p>
+    </div>
+  </footer>
+</div>
+`;
