@@ -6,10 +6,10 @@ import Home from '@/app/page';
 
 describe('Home', () => {
   it('renders a main element', async () => {
-    render(await Home())
+    render(await Home());
 
-    const main = screen.getByRole('main')
+    const main = screen.getByRole('main');
 
-    expect(main).toBeInTheDocument()
+    expect(main).toBeInTheDocument();
   })
 });

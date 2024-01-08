@@ -238,7 +238,9 @@ exports[`renders homepage unchanged 1`] = `
                 name
               </label>
               <input
+                autocomplete="name"
                 class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-none focus:border-b focus:border-sky-600  h-20 mb-4 border-gray-200"
+                id="name"
                 name="name"
                 placeholder="Your name"
               />
@@ -249,6 +251,7 @@ exports[`renders homepage unchanged 1`] = `
                 email
               </label>
               <input
+                autocomplete="email"
                 class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-none focus:border-b focus:border-sky-600  h-20 mb-10 border-gray-200"
                 id="email"
                 name="email"
@@ -263,6 +266,7 @@ exports[`renders homepage unchanged 1`] = `
               </label>
               <textarea
                 class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-none focus:border-b focus:border-sky-600 pb-8 mb-8 border-gray-200"
+                id="message"
                 name="message"
                 placeholder="Your message"
                 rows="4"
@@ -283,30 +287,26 @@ exports[`renders homepage unchanged 1`] = `
     </section>
   </main>
   <footer
-    class="grid-cols-main"
+    class="grid grid-cols-main (className}"
   >
     <div
-      class="col-gutter"
+      class="col-gutter flex flex-row flex-wrap py-8 justify-center gap-x-12 gap-y-4 sm:gap-x-24"
     >
-      <div
-        class="flex flex-row justify-center gap-10 h-24 items-center"
+      <p
+        class="text-gray-400 flex-none text-sm sm:text-base"
       >
-        <p
-          class="text-gray-400"
+        © Space Dog Studios
+      </p>
+      <p
+        class="text-gray-400 flex-none text-sm sm:text-base"
+      >
+        Design inspired by 
+        <a
+          href="https://www.colorlib.com/"
         >
-          © Space Dog Studios
-        </p>
-        <p
-          class="text-gray-400"
-        >
-          Design inspired by 
-          <a
-            href="https://www.colorlib.com/"
-          >
-            Colorlib
-          </a>
-        </p>
-      </div>
+          Colorlib
+        </a>
+      </p>
     </div>
   </footer>
 </div>
