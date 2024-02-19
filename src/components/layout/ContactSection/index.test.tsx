@@ -40,7 +40,7 @@ describe("ContactSection", () => {
     fireEvent.submit(screen.getByRole("button"));
 
     expect(await screen.findAllByRole("alert")).toHaveLength(1);
-    expect(fetchMock).not.toBeCalled();
+    expect(fetchMock).not.toHaveBeenCalled();
     expect(screen.getByLabelText("name")).toHaveValue("name");
     expect(screen.getByLabelText("email")).toHaveValue("email");
     expect(screen.getByLabelText("message")).toHaveValue("message");
@@ -70,7 +70,7 @@ describe("ContactSection", () => {
     fireEvent.submit(screen.getByRole("button"));
 
     expect(await screen.findAllByRole("alert")).toHaveLength(1);
-    expect(fetchMock).not.toBeCalled();
+    expect(fetchMock).not.toHaveBeenCalled();
     expect(screen.getByLabelText("name")).toHaveValue("n");
     expect(screen.getByLabelText("email")).toHaveValue("test@mail.com");
     expect(screen.getByLabelText("message")).toHaveValue("message");
@@ -100,7 +100,7 @@ describe("ContactSection", () => {
     fireEvent.submit(screen.getByRole("button"));
 
     expect(await screen.findAllByRole("alert")).toHaveLength(1);
-    expect(fetchMock).not.toBeCalled();
+    expect(fetchMock).not.toHaveBeenCalled();
     expect(screen.getByLabelText("name")).toHaveValue("name");
     expect(screen.getByLabelText("email")).toHaveValue("test@mail.com");
     expect(screen.getByLabelText("message")).toHaveValue("m");
