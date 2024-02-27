@@ -1,10 +1,12 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, CSSProperties } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import type { SectionProps as Props } from "@/types/main";
 import { tv } from "tailwind-variants";
 import { SECTION_ID } from "@/globals/sections";
+import type { SectionProps as Props } from "@/types/main";
+import { starsDataUrl } from "@/globals/base64";
 
 const containerClass = tv({
   base: "h-screen relative grid grid-cols-main items-center overflow-hidden",
@@ -12,6 +14,10 @@ const containerClass = tv({
 
 export default function HomeSection({ className, tagline }: Props) {
   const ref = useRef(null);
+  const imageStyle: CSSProperties = {
+    objectPosition: "bottom",
+    objectFit: "cover",
+  };
   const tvOptions = className ? { class: className } : {};
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -29,26 +35,36 @@ export default function HomeSection({ className, tagline }: Props) {
       <motion.div
         className="absolute inset-0"
         style={{
-          backgroundImage: "url(bg-stars.jpg)",
-          backgroundPosition: "bottom",
-          backgroundSize: "cover",
           y: backgroundY,
         }}
-      />
+      >
+        <Image
+          priority
+          src="bg-stars.jpg"
+          alt=""
+          role="presentation"
+          placeholder="blur"
+          blurDataURL={starsDataUrl}
+          fill
+          style={imageStyle}
+        />
+      </motion.div>
       <motion.h1
         style={{ y: textY }}
         className="grid col-content text-white text-4xl md:text-6xl relative max-w-4xl pb-36"
       >
         {tagline}
       </motion.h1>
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "url(bg-trees.png)",
-          backgroundPosition: "bottom",
-          backgroundSize: "cover",
-        }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          priority
+          src="bg-trees.png"
+          alt=""
+          role="presentation"
+          fill
+          style={imageStyle}
+        />
+      </div>
     </section>
   );
 }

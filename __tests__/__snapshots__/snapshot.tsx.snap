@@ -69,8 +69,13 @@ exports[`renders homepage unchanged 1`] = `
     >
       <div
         class="absolute inset-0"
-        style="background-image: url(bg-stars.jpg); background-position: bottom; background-size: cover; transform: translateY(0%) translateZ(0);"
-      />
+        style="transform: translateY(0%) translateZ(0);"
+      >
+        <img
+          alt=""
+          src="bg-stars.jpg"
+        />
+      </div>
       <h1
         class="grid col-content text-white text-4xl md:text-6xl relative max-w-4xl pb-36"
         style="transform: translateY(0%) translateZ(0);"
@@ -79,8 +84,12 @@ exports[`renders homepage unchanged 1`] = `
       </h1>
       <div
         class="absolute inset-0"
-        style="background-image: url(bg-trees.png); background-position: bottom; background-size: cover;"
-      />
+      >
+        <img
+          alt=""
+          src="bg-trees.png"
+        />
+      </div>
     </section>
     <section
       class="grid grid-cols-main bg-sky-600"
@@ -154,12 +163,15 @@ exports[`renders homepage unchanged 1`] = `
             class="flex flex-col pt-8 lg:grid lg:grid-cols-2 gap-16"
           >
             <div
-              class="grid md:grid-cols-services gap-12"
+              class="grid justify-items-center md:grid-cols-services gap-12"
             >
               <div
-                class="before:content-appIcon text-center before:inline-block before:stroke-sky-600 before:w-20"
+                class=" relative inline-block stroke-sky-600 w-20 h-20"
               >
-                 
+                <img
+                  alt="App Development"
+                  src="app-icon.svg"
+                />
               </div>
               <div
                 class="text-center md:text-left [&_p]:text-gray-500 [&_h3]:text-2xl [&_h3]:pb-6 md:[&_h3]:pb-4"
@@ -170,12 +182,15 @@ exports[`renders homepage unchanged 1`] = `
               </div>
             </div>
             <div
-              class="grid md:grid-cols-services gap-12"
+              class="grid justify-items-center md:grid-cols-services gap-12"
             >
               <div
-                class="before:content-webIcon text-center before:inline-block before:stroke-sky-600 before:w-20"
+                class=" relative inline-block stroke-sky-600 w-20 h-20"
               >
-                 
+                <img
+                  alt="Web Development"
+                  src="web-icon.svg"
+                />
               </div>
               <div
                 class="text-center md:text-left [&_p]:text-gray-500 [&_h3]:text-2xl [&_h3]:pb-6 md:[&_h3]:pb-4"

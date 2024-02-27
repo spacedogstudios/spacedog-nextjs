@@ -1,4 +1,4 @@
-import 'jest-fetch-mock';
+import "jest-fetch-mock";
 import { D1Database } from "@miniflare/d1";
 
 declare global {
@@ -6,7 +6,8 @@ declare global {
     interface ProcessEnv {
       NODE_ENV: "development" | "production";
       DB: D1Database;
-      NEXT_PUBLIC_IMAGE_SERVER: string;
+      IMAGE_TRANSFORM_URL?: string;
+      IMAGE_SOURCE_URL: string;
       MAIL_API_KEY: string;
       MAIL_API_URL: string;
       MAIL_TO: string;

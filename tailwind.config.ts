@@ -20,10 +20,6 @@ const config: Config = {
         "-10": "-10",
         "-20": "-20",
       },
-      content: {
-        appIcon: 'url("/app-icon.svg")',
-        webIcon: 'url("/web-icon.svg")',
-      },
     },
   },
   plugins: [],
