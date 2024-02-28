@@ -1,11 +1,12 @@
 // Learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom";
-import {ReactElement} from "react";
+import { ImgHTMLAttributes } from "react";
 
 jest.mock("next/image", () => ({
   __esModule: true,
-  default: (props: any): ReactElement => {
-    return <img {...props} />;
+  default: (props: ImgHTMLAttributes<HTMLImageElement>) => {
+    const { alt, src, width, height } = props;
+    return <img alt={alt} src={src} width={width} height={height} />;
   },
 }));
 
