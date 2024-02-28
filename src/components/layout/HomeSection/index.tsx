@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { SectionProps as Props } from "@/types/main";
 import { tv } from "tailwind-variants";
+import { SECTION_ID } from "@/globals/sections";
 
 const containerClass = tv({
   base: "h-screen relative grid grid-cols-main items-center overflow-hidden",
@@ -21,7 +22,7 @@ export default function HomeSection({ className, tagline }: Props) {
 
   return (
     <section
-      id="home"
+      id={SECTION_ID.HOME}
       ref={ref}
       className={containerClass(tvOptions)}
     >
