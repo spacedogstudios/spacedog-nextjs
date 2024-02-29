@@ -9,7 +9,7 @@ import type { SectionProps as Props } from "@/types/main";
 import { starsDataUrl } from "@/globals/base64";
 
 const containerClass = tv({
-  base: "h-screen relative grid grid-cols-main items-center overflow-hidden",
+  base: "h-screen relative grid grid-cols-small md:grid-cols-main items-center overflow-hidden",
 });
 
 export default function HomeSection({ className, tagline }: Props) {

@@ -6,7 +6,7 @@ import SmoothScrolling from "@/components/helpers/SmoothScrolling";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: "500",
+  weight: ["300", "500"],
 });
 
 export const metadata: Metadata = {
@@ -17,11 +17,7 @@ export const metadata: Metadata = {
     "We have everything you need to meet all your app and web development needs.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   const bodyClass = `bg-neutral-800 neutral-500 ${montserrat.className}`;
 
   return (

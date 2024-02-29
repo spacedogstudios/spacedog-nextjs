@@ -11,7 +11,9 @@ type Props = {
   className?: string;
 };
 
-const containerClass = tv({ base: "grid grid-cols-main" });
+const containerClass = tv({
+  base: "grid grid-cols-small md:grid-cols-main",
+});
 
 export default function Header({ className }: Props) {
   const [hidden, setHidden] = useState(false);

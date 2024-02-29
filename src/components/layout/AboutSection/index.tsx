@@ -20,7 +20,7 @@ export default function AboutSection({
       subheading={subheading}
       tagline={tagline}
     >
-      <div className="[&_p]:text-2xl [&_p]:leading-loose [&_p]:font-serif [&_p]:font-light [&_p]:text-gray-000 [&_p]:text-center">
+      <div className="[&_p]:text-2xl [&_p]:leading-loose [&_p]:font-light [&_p]:text-white [&_p]:text-center">
         {jsx && jsx[0]}
       </div>
     </Section>
