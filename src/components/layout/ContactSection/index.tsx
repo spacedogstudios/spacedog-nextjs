@@ -14,7 +14,7 @@ type FetchResponse = Response & {
   errors?: FieldErrors<TContactSchema>;
 };
 
-const messageClass = tv({ base: "text-lg text-red-500 pb-4 -mt-2" });
+const messageClass = tv({ base: "text-xl text-red-500 pb-4 -mt-2" });
 
 function Message(
   message: string | undefined,
@@ -41,7 +41,7 @@ async function sendData(data: TContactSchema): Promise<FetchResponse> {
 const containerClass = tv({ base: "bg-gray-700" });
 const inputClass =
   "block w-full appearance-none leading-8 text-lg text-gray-200 \
-  bg-transparent border-b outline-none focus:border-b focus:border-sky-600";
+  bg-transparent border-b outline-none focus:border-b focus:border-sky-700";
 
 export default function ContactSection({
   id,
@@ -126,7 +126,7 @@ export default function ContactSection({
       tagline={tagline}
     >
       <div className="text-left pt-4 w-full max-w-7xl">
-        <h3 className="text-white text-lg uppercase pb-2">Send Us A Message</h3>
+        <h3 className="text-white text-xl uppercase pb-2">Send Us A Message</h3>
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           {errors.root && Message(errors.root.message, "pt-4")}
           {submittedSuccessfully &&
@@ -183,7 +183,7 @@ export default function ContactSection({
           {errors.message && Message(errors.message.message, "-mt-6 mb-4")}
           <button
             disabled={isSubmitting}
-            className="relative flex justify-center items-center w-full h-16 bg-sky-600 uppercase text-g text-white"
+            className="relative flex justify-center items-center w-full h-16 bg-sky-700 uppercase text-xl text-white"
           >
             <div className="relative px-10">
               {isSubmitting && (

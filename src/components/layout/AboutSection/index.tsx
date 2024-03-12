@@ -2,7 +2,7 @@ import Section from "@/components/layout/Section";
 import type { SectionProps as Props } from "@/types/main";
 import { tv } from "tailwind-variants";
 
-const containerClass = tv({ base: "bg-sky-600" });
+const containerClass = tv({ base: "bg-sky-700" });
 
 export default function AboutSection({
   id,

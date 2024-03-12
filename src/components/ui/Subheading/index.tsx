@@ -13,12 +13,12 @@ const sections = {
     separatorSlot: "border-sky-300",
   },
   [SECTION_ID.SERVICES]: {
-    subheadingSlot: "text-sky-600",
+    subheadingSlot: "text-sky-700",
     taglineSlot: "text-4xl md:text-6xl text-black",
     separatorSlot: "border-gray-300",
   },
   [SECTION_ID.CONTACT]: {
-    subheadingSlot: "text-sky-600",
+    subheadingSlot: "text-sky-500",
     taglineSlot: "text-4xl md:text-6xl text-white",
     separatorSlot: "border-gray-500",
   },
@@ -32,7 +32,7 @@ function isSectionKey(key: string): key is SectionKeys {
 
 const section = tv({
   slots: {
-    subheadingSlot: "font-bold text-lg uppercase pb-4",
+    subheadingSlot: "font-bold text-xl uppercase pb-4",
     taglineSlot: "text-center leading-snug pb-8",
     separatorSlot: "w-1/2 border-t",
   },

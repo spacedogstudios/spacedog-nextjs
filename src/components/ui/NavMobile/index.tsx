@@ -52,7 +52,7 @@ export default function NavMobile() {
                       }}
                       key={id}
                       role="menuitem"
-                      className="border-b border-gray-200 hover:border-sky-600 active:border-sky-600"
+                      className="border-b border-gray-200 hover:border-sky-700 active:border-sky-700"
                     >
                       <a
                         onClick={handleClick}

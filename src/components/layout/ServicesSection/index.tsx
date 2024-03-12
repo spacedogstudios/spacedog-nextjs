@@ -8,7 +8,7 @@ import { tv } from "tailwind-variants";
 
 const containerClass = tv({ base: "bg-white" });
 const blockClass = "grid justify-items-center md:grid-cols-services gap-12";
-const iconClass = " relative inline-block stroke-sky-600 w-20 h-20";
+const iconClass = " relative inline-block stroke-sky-700 w-20 h-20";
 const bodyClass =
   "text-center md:text-left [&_p]:text-gray-500 [&_h3]:text-2xl [&_h3]:pb-6 md:[&_h3]:pb-4";
 
