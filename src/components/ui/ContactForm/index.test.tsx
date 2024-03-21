@@ -1,6 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import ContactSection from "@/components/layout/ContactSection";
-import { SECTION_ID } from "@/globals/sections";
+import ContactForm from "@/components/ui/ContactForm/index";
 
 describe("ContactSection", () => {
   beforeEach(() => {
@@ -8,7 +7,7 @@ describe("ContactSection", () => {
   });
 
   it("should display required error when value is invalid", async () => {
-    render(<ContactSection id={SECTION_ID.CONTACT} />);
+    render(<ContactForm />);
 
     fireEvent.submit(screen.getByRole("button"));
 
@@ -17,7 +16,7 @@ describe("ContactSection", () => {
   });
 
   it("should display matching error when email is invalid", async () => {
-    render(<ContactSection id={SECTION_ID.CONTACT} />);
+    render(<ContactForm />);
 
     fireEvent.input(screen.getByLabelText("name"), {
       target: {
@@ -47,7 +46,7 @@ describe("ContactSection", () => {
   });
 
   it("should display min length error when name is invalid", async () => {
-    render(<ContactSection id={SECTION_ID.CONTACT} />);
+    render(<ContactForm />);
 
     fireEvent.input(screen.getByLabelText("name"), {
       target: {
@@ -77,7 +76,7 @@ describe("ContactSection", () => {
   });
 
   it("should display min length error when message is invalid", async () => {
-    render(<ContactSection id={SECTION_ID.CONTACT} />);
+    render(<ContactForm />);
 
     fireEvent.input(screen.getByLabelText("name"), {
       target: {
@@ -108,7 +107,7 @@ describe("ContactSection", () => {
 
   it("should not display error when value is valid", async () => {
     fetchMock.mockResponseOnce(JSON.stringify({ success: true }));
-    render(<ContactSection id={SECTION_ID.CONTACT} />);
+    render(<ContactForm />);
 
     fireEvent.input(screen.getByLabelText("name"), {
       target: {
