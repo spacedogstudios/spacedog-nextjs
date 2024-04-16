@@ -5,20 +5,17 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Image from "next/image";
 
 import Nav from "@/components/layout/Nav";
-import { tv } from "tailwind-variants";
+import { tvClassName } from "@/lib/utils";
 
 type Props = {
   className?: string;
 };
 
-const containerClass = tv({
-  base: "grid grid-cols-small md:grid-cols-main",
-});
-
 export default function Header({ className }: Props) {
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
-  const tvOptions = className ? { class: className } : {};
+  const containerClassName =
+    "grid grid-cols-small md:grid-cols-main bg-black bg-opacity-80";
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
@@ -33,14 +30,14 @@ export default function Header({ className }: Props) {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.25, ease: "easeInOut" }}
-      className={containerClass(tvOptions)}
+      className={tvClassName(containerClassName, className)}
     >
       <div className="col-gutter">
         <div className="flex h-16 items-center justify-between">
           <a className="site-logo" href="/">
             <Image src="sub-logo.png" alt="Homepage" width={190} height={26} />
           </a>
-          <Nav className="flex justify-end" />
+          <Nav />
         </div>
       </div>
     </motion.header>

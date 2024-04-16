@@ -3,14 +3,10 @@
 import { useRef, CSSProperties } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { tv } from "tailwind-variants";
 import { SECTION_ID } from "@/globals/sections";
 import type { SectionProps as Props } from "@/types/main";
 import { starsDataUrl } from "@/globals/base64";
-
-const containerClass = tv({
-  base: "h-screen relative grid grid-cols-small md:grid-cols-main items-center overflow-hidden",
-});
+import { tvClassName } from "@/lib/utils";
 
 export default function HomeSection({ className, tagline }: Props) {
   const ref = useRef(null);
@@ -18,7 +14,8 @@ export default function HomeSection({ className, tagline }: Props) {
     objectPosition: "bottom",
     objectFit: "cover",
   };
-  const tvOptions = className ? { class: className } : {};
+  const containerClassName =
+    "h-screen relative grid grid-cols-small md:grid-cols-main items-center overflow-hidden";
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -30,7 +27,7 @@ export default function HomeSection({ className, tagline }: Props) {
     <section
       id={SECTION_ID.HOME}
       ref={ref}
-      className={containerClass(tvOptions)}
+      className={tvClassName(containerClassName, className)}
     >
       <motion.div
         className="absolute inset-0"

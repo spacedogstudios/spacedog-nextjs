@@ -12,17 +12,23 @@ import { Squash as Hamburger } from "hamburger-react";
 
 import { routes } from "@/globals/routes";
 import { useLenis } from "@studio-freight/react-lenis";
+import { tvClassName } from "@/lib/utils";
 
-export default function NavMobile() {
+type Props = {
+  className?: string;
+};
+
+export default function NavMobile({ className }: Props) {
   const [isOpen, setOpen] = useState(false);
   const ref = useRef(null);
   const lenis = useLenis();
+  const containerClassName = "lg:hidden flex items-center";
 
   useClickAway(ref, () => setOpen(false));
 
   return (
     <LazyMotion features={domAnimation}>
-      <div ref={ref} className="lg:hidden flex items-center">
+      <div ref={ref} className={tvClassName(containerClassName, className)}>
         <Hamburger toggled={isOpen} size={24} color="white" toggle={setOpen} />
         <AnimatePresence>
           {isOpen && (

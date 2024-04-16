@@ -1,23 +1,19 @@
-import { tv } from "tailwind-variants";
+import { tvClassName } from "@/lib/utils";
 
 type Props = {
   className?: string;
   spinnerClassName?: string;
 };
 
-const containerClass = tv({ base: "w-16 h-16" });
-const spinnerClass = tv({
-  base: "w-full h-full text-gray-200 animate-spin dark:text-gray-600 fill-blue-600",
-});
-
 export default function Spinner({ className, spinnerClassName }: Props) {
-  const containerTvOptions = className ? { class: className } : {};
-  const spinnerTvOptions = spinnerClassName ? { class: spinnerClassName } : {};
+  const containerClassName = "w-16 h-16";
+  const spinnerBaseClassName =
+    "w-full h-full text-gray-200 animate-spin dark:text-gray-600 fill-blue-600";
   return (
-    <div className={containerClass(containerTvOptions)}>
+    <div className={tvClassName(containerClassName, className)}>
       <svg
         aria-hidden="true"
-        className={spinnerClass(spinnerTvOptions)}
+        className={tvClassName(spinnerBaseClassName, spinnerClassName)}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

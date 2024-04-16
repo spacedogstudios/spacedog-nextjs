@@ -20,7 +20,7 @@ export default async function Home() {
   let content: Record<string, Content>;
 
   try {
-    content = await getContent() ?? {};
+    content = (await getContent()) ?? {};
     if (!content) {
       throw new Error("Database error");
     }
@@ -31,7 +31,7 @@ export default async function Home() {
 
   return (
     <>
-      <Header className="fixed top-0 left-0 right-0 bg-black bg-opacity-80 z-10" />
+      <Header className="fixed top-0 left-0 right-0 z-10" />
       <Main content={content} />
       <Footer />
     </>

@@ -3,6 +3,7 @@
 import NavDesktop from "@/components/ui/NavDesktop";
 import NavMobile from "@/components/ui/NavMobile";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { tvClassName } from "@/lib/utils";
 
 type Props = {
   className?: string;
@@ -21,9 +22,10 @@ function NavElement({ isLarge }: NavProps) {
 
 export default function Nav({ className }: Props) {
   const isLarge = useBreakpoint("lg");
+  const containerClassName = "flex justify-end";
 
   return (
-    <nav className={className}>
+    <nav className={tvClassName(containerClassName, className)}>
       <NavElement isLarge={isLarge} />
     </nav>
   );

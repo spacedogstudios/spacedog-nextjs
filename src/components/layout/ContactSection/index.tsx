@@ -1,11 +1,9 @@
 "use client";
 
-import { tv } from "tailwind-variants";
 import Section from "@/components/layout/Section";
 import type { SectionProps as Props } from "@/types/main";
 import ContactForm from "@/components/ui/ContactForm";
-
-const containerClass = tv({ base: "bg-gray-700" });
+import { tvClassName } from "@/lib/utils";
 
 export default function ContactSection({
   id,
@@ -13,12 +11,12 @@ export default function ContactSection({
   subheading,
   tagline,
 }: Props) {
-  const tvOptions = className ? { class: className } : {};
+  const containerClassName = "bg-gray-700";
 
   return (
     <Section
       id={id}
-      className={containerClass(tvOptions)}
+      className={tvClassName(containerClassName, className)}
       subheading={subheading}
       tagline={tagline}
     >

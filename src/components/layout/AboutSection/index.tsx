@@ -1,8 +1,6 @@
 import Section from "@/components/layout/Section";
 import type { SectionProps as Props } from "@/types/main";
-import { tv } from "tailwind-variants";
-
-const containerClass = tv({ base: "bg-sky-700" });
+import { tvClassName } from "@/lib/utils";
 
 export default function AboutSection({
   id,
@@ -11,12 +9,12 @@ export default function AboutSection({
   tagline,
   jsx,
 }: Props) {
-  const tvOptions = className ? { class: className } : {};
+  const containerClassName = "bg-sky-700";
 
   return (
     <Section
       id={id}
-      className={containerClass(tvOptions)}
+      className={tvClassName(containerClassName, className)}
       subheading={subheading}
       tagline={tagline}
     >

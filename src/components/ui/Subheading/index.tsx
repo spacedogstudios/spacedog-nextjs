@@ -5,6 +5,7 @@ import { tv } from "tailwind-variants";
 
 import type { SectionProps as Props } from "@/types/main";
 import { SECTION_ID } from "@/globals/sections";
+import { tvClassName } from "@/lib/utils";
 
 const sections = {
   [SECTION_ID.ABOUT]: {
@@ -51,6 +52,7 @@ export default function SectionTitle({
   const { subheadingSlot, taglineSlot, separatorSlot } = section({
     section: sectionId,
   });
+  const containerClassName = "flex flex-col items-center";
 
   return (
     <motion.div
@@ -58,7 +60,7 @@ export default function SectionTitle({
       transition={{ duration: 0.5, ease: "easeOut" }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={String(className)}
+      className={tvClassName(containerClassName, className)}
     >
       <h1 className={subheadingSlot()}>{subheading}</h1>
       <h2 className={taglineSlot()}>{tagline}</h2>

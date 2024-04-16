@@ -2,20 +2,18 @@
 
 import { routes } from "@/globals/routes";
 import { useLenis } from "@studio-freight/react-lenis";
-import { tv } from "tailwind-variants";
+import { tvClassName } from "@/lib/utils";
 
 type Props = {
   className?: string;
 };
 
-const containerClass = tv({ base: "lg:flex lg:items-center gap-5 text-sm" });
-
 export default function NavDesktop({ className }: Props) {
   const lenis = useLenis();
-  const tvOptions = className ? { class: className } : {};
+  const containerClassName = "lg:flex lg:items-center gap-5 text-sm";
 
   return (
-    <ul role="menubar" className={containerClass(tvOptions)}>
+    <ul role="menubar" className={tvClassName(containerClassName, className)}>
       {routes.map(({ id, title, href }) => {
         const handleClick = () => {
           lenis.scrollTo(href);
