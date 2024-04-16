@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { ComponentPropsWithoutRef, useRef, useState } from "react";
 import { useClickAway } from "react-use";
 import {
   LazyMotion,
@@ -14,11 +14,9 @@ import { routes } from "@/globals/routes";
 import { useLenis } from "@studio-freight/react-lenis";
 import { tvClassName } from "@/lib/utils";
 
-type Props = {
-  className?: string;
-};
-
-export default function NavMobile({ className }: Props) {
+export default function NavMobile({
+  className,
+}: ComponentPropsWithoutRef<"div">) {
   const [isOpen, setOpen] = useState(false);
   const ref = useRef(null);
   const lenis = useLenis();

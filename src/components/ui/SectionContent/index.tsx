@@ -1,14 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ComponentPropsWithoutRef } from "react";
 
-export type Props = {
-  className?: string;
-  children?: ReactNode;
-};
-
-export default function SectionContent({ className, children }: Props) {
+export default function SectionContent({
+  className,
+  children,
+}: ComponentPropsWithoutRef<"div">) {
   return (
     <motion.div
       initial={{ opacity: 0, y: "50%" }}

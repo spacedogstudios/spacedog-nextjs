@@ -3,12 +3,11 @@
 import { routes } from "@/globals/routes";
 import { useLenis } from "@studio-freight/react-lenis";
 import { tvClassName } from "@/lib/utils";
+import { ComponentPropsWithoutRef } from "react";
 
-type Props = {
-  className?: string;
-};
-
-export default function NavDesktop({ className }: Props) {
+export default function NavDesktop({
+  className,
+}: ComponentPropsWithoutRef<"ul">) {
   const lenis = useLenis();
   const containerClassName = "lg:flex lg:items-center gap-5 text-sm";
 

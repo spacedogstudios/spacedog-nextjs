@@ -1,17 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { ComponentPropsWithoutRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Image from "next/image";
 
 import Nav from "@/components/layout/Nav";
 import { tvClassName } from "@/lib/utils";
 
-type Props = {
-  className?: string;
-};
-
-export default function Header({ className }: Props) {
+export default function Header({
+  className,
+}: ComponentPropsWithoutRef<"header">) {
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
   const containerClassName =

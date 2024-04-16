@@ -1,7 +1,7 @@
 import { tvClassName } from "@/lib/utils";
+import { ComponentPropsWithoutRef } from "react";
 
-type Props = {
-  className?: string;
+type Props = ComponentPropsWithoutRef<"div"> & {
   spinnerClassName?: string;
 };
 

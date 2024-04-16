@@ -1,6 +1,11 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import {
+  ComponentPropsWithoutRef,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import { useForm, FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -10,10 +15,6 @@ import { tv } from "tailwind-variants";
 
 type FetchResponse = Response & {
   errors?: FieldErrors<TContactSchema>;
-};
-
-type Props = {
-  className?: string;
 };
 
 const messageClass = tv({ base: "text-xl text-red-500 pb-4 -mt-2" });
@@ -43,7 +44,9 @@ async function sendData(data: TContactSchema): Promise<FetchResponse> {
   });
 }
 
-export default function ContactForm({ className }: Props) {
+export default function ContactForm({
+  className,
+}: ComponentPropsWithoutRef<"form">) {
   const [submittedSuccessfully, setSubmittedSuccessfully] = useState(false);
   const {
     register,

@@ -1,10 +1,9 @@
 import { tvClassName } from "@/lib/utils";
+import { ComponentPropsWithoutRef } from "react";
 
-type Props = {
-  className?: string;
-};
-
-export default function Footer({ className }: Props) {
+export default function Footer({
+  className,
+}: ComponentPropsWithoutRef<"footer">) {
   const containerClassName = "grid grid-cols-small md:grid-cols-main";
   const paragraphClass = "text-gray-400 flex-none text-sm sm:text-base";
 
