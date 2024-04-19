@@ -1,4 +1,4 @@
-import { setupDevBindings } from '@cloudflare/next-on-pages/next-dev';
+import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
 
 const nextConfig = {
   images: {
@@ -11,14 +11,7 @@ const nextConfig = {
 // (when running the application with `next dev`), for more information see:
 // https://github.com/cloudflare/next-on-pages/blob/8e93067/internal-packages/next-dev/README.md
 if (process.env.NODE_ENV === 'development') {
-  await setupDevBindings({
-    bindings: {
-      DB: {
-        type: 'd1',
-        databaseId: 'DB',
-      }
-    }
-  });
+  await setupDevPlatform();
 }
 
 export default nextConfig;

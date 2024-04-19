@@ -20,7 +20,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["node", "jest", "@testing-library/jest-dom", "@cloudflare/workers-types"],
+    "types": ["node", "jest", "@testing-library/jest-dom", "@cloudflare/workers-types/2023-07-01"],
     "lib": ["dom", "dom.iterable", "esnext"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -3,13 +3,12 @@ import Footer from "../components/layout/Footer";
 import Main from "../components/layout/Main";
 import type { Content } from "@/types/main";
 import parseContent from "@/lib/parseContent";
+import { getRequestContext } from "@cloudflare/next-on-pages";
 
 export const runtime = "edge";
 
 async function getContent() {
-  const { DB } = process.env;
-
-  if (!DB) throw new Error("Database connection failed");
+  const DB = getRequestContext().env.DB;
 
   const { results } = await DB.prepare("SELECT * FROM content;").all();
 

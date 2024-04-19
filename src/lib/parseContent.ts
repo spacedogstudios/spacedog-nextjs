@@ -3,14 +3,18 @@ import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeSanitize from "rehype-sanitize";
-import rehypeReact from "rehype-react";
+import rehypeReact, { Options } from "rehype-react";
 import * as prod from "react/jsx-runtime";
 
 import type { Result, Content } from "@/types/main";
 import { SECTION_ID, SectionId } from "@/globals/sections";
+import { Jsx } from "hast-util-to-jsx-runtime";
 
-// @ts-expect-error: the react types are missing.
-const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
+const production: Options = {
+  Fragment: prod.Fragment,
+  jsx: prod.jsx as Jsx,
+  jsxs: prod.jsxs as Jsx,
+};
 
 function isSectionId(id: string): id is SectionId {
   return Object.values(SECTION_ID).includes(id as SectionId);

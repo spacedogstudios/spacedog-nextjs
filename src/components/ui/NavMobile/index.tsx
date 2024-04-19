@@ -41,7 +41,7 @@ export default function NavMobile({
                 {routes.map(({ id, title, href }, idx) => {
                   const handleClick = () => {
                     setOpen(false);
-                    lenis.scrollTo(href);
+                    lenis && lenis.scrollTo(href);
                   };
 
                   return (

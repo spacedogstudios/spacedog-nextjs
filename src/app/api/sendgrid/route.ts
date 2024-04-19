@@ -59,7 +59,10 @@ export async function POST(request: Request) {
   };
 
   try {
-    await fetch(process.env.MAIL_API_URL, options);
+    const url = process.env.MAIL_API_URL;
+    if (!url) throw new Error("No email service defined.");
+
+    await fetch(url, options);
     return NextResponse.json({ success: true });
   } catch (error) {
     const fetchError = error as FetchError;

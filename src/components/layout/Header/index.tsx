@@ -16,7 +16,7 @@ export default function Header({
     "grid grid-cols-small md:grid-cols-main bg-black bg-opacity-80";
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious();
+    const previous = scrollY.getPrevious() ?? 0;
     setHidden(latest > previous);
   });
 

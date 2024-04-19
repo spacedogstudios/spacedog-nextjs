@@ -7,7 +7,7 @@ function SmoothScrolling({
   children,
 }: ComponentPropsWithoutRef<typeof ReactLenis>) {
   return (
-    <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothTouch: true }}>
+    <ReactLenis root options={{ lerp: 0.1, duration: 1.5, syncTouch: true }}>
       {children}
     </ReactLenis>
   );
