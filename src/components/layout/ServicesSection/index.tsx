@@ -1,5 +1,3 @@
-"use client";
-
 import { CSSProperties } from "react";
 import Image from "next/image";
 import Section from "@/components/layout/Section";

@@ -9,7 +9,7 @@ import * as prod from "react/jsx-runtime";
 import type { Content } from "@/types/main";
 import { SECTION_ID, SectionId } from "@/globals/sections";
 import { Jsx } from "hast-util-to-jsx-runtime";
-import { ContentRow } from "@/app/drizzle";
+import { ContentRow } from "@/drizzle";
 
 const production: Options = {
   Fragment: prod.Fragment,

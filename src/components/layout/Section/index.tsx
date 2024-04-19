@@ -1,5 +1,3 @@
-"use client";
-
 import Subheading from "@/components/ui/Subheading";
 import type { SectionProps as Props } from "@/types/main";
 import SectionContent from "@/components/ui/SectionContent";

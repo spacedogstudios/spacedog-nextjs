@@ -1,9 +1,7 @@
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
-import Main from "../components/layout/Main";
+import Main from "@/components/layout/Main";
 import type { Content } from "@/types/main";
 import parseContent from "@/lib/parseContent";
-import { getContentAction } from "@/app/actions/content";
+import { getContentAction } from "@/actions";
 
 export const runtime = "edge";
 
@@ -26,11 +24,5 @@ export default async function Home() {
     throw error;
   }
 
-  return (
-    <>
-      <Header className="fixed top-0 left-0 right-0 z-10" />
-      <Main content={content} />
-      <Footer />
-    </>
-  );
+  return <Main content={content} />;
 }

@@ -3,6 +3,8 @@ import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import SmoothScrolling from "@/components/helpers/SmoothScrolling";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -23,7 +25,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={bodyClass}>
-        <SmoothScrolling>{children}</SmoothScrolling>
+        <SmoothScrolling>
+          <Header className="fixed top-0 left-0 right-0 z-10" />
+          {children}
+          <Footer />
+        </SmoothScrolling>
       </body>
     </html>
   );
