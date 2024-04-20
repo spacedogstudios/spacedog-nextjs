@@ -1,16 +1,9 @@
 import type { ComponentPropsWithRef, ReactElement } from "react";
 import { SectionId } from "@/globals/sections";
 
-export type Result = {
-  route_id: string;
-  subheading?: string;
-  tagline?: string;
-  body?: string;
-  jsx?: ReactElement[];
-};
-
-export type Content = Result & {
+export type Content = Omit<ContentRowt, "id"> & {
   id: SectionId;
+  jsx?: ReactElement[];
 };
 
 export type SectionProps = Partial<Content> &

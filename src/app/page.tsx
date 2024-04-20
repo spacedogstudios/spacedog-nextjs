@@ -1,18 +1,16 @@
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
-import Main from "../components/layout/Main";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import Main from "@/components/layout/Main";
 import type { Content } from "@/types/main";
 import parseContent from "@/lib/parseContent";
-import { getRequestContext } from "@cloudflare/next-on-pages";
+import { getContentAction } from "@/actions/content";
 
 export const runtime = "edge";
 
 async function getContent() {
-  const DB = getRequestContext().env.DB;
+  const rows = await getContentAction();
 
-  const { results } = await DB.prepare("SELECT * FROM content;").all();
-
-  if (results) return await parseContent(results as Content[]);
+  if (rows && rows.length) return await parseContent(rows);
 }
 
 export default async function Home() {

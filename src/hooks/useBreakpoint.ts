@@ -1,10 +1,9 @@
 import { useMedia } from "react-use";
 import resolveConfig from "tailwindcss/resolveConfig";
-import { Config } from "tailwindcss/types/config";
 
-import tailwindConfig from "../../tailwind.config";
+import tailwindConfig from "@/../tailwind.config";
 
-const fullConfig = resolveConfig(tailwindConfig as unknown as Config);
+const fullConfig = resolveConfig(tailwindConfig);
 
 const breakpoints = fullConfig?.theme?.screens || {
   xs: "480px",
