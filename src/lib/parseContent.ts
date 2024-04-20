@@ -6,9 +6,10 @@ import rehypeSanitize from "rehype-sanitize";
 import rehypeReact, { Options } from "rehype-react";
 import * as prod from "react/jsx-runtime";
 
-import type { Result, Content } from "@/types/main";
+import type { Content } from "@/types/main";
 import { SECTION_ID, SectionId } from "@/globals/sections";
 import { Jsx } from "hast-util-to-jsx-runtime";
+import { ContentRow } from "@/drizzle";
 
 const production: Options = {
   Fragment: prod.Fragment,
@@ -19,7 +20,7 @@ const production: Options = {
 function isSectionId(id: string): id is SectionId {
   return Object.values(SECTION_ID).includes(id as SectionId);
 }
-async function markdownToReact(item: Result): Promise<ReactElement[]> {
+async function markdownToReact(item: ContentRow): Promise<ReactElement[]> {
   const jsx: ReactElement[] = [];
 
   if (item.body) {
@@ -41,18 +42,15 @@ async function markdownToReact(item: Result): Promise<ReactElement[]> {
 }
 
 export default async function parseContent(
-  results: Result[],
+  rows: ContentRow[],
 ): Promise<Record<string, Content>> {
-  await Promise.all(
-    results.map(
-      async (item: Result) => (item.jsx = await markdownToReact(item)),
-    ),
-  );
-  return results.reduce((result: Record<string, Content>, item) => {
-    if (isSectionId(item.route_id)) {
-      const id = item.route_id;
-      result[item.route_id] = { ...item, id };
+  const content: Record<string, Content> = {};
+  for (const row of rows) {
+    if (isSectionId(row.route_id)) {
+      const id = row.route_id;
+      const jsx = await markdownToReact(row);
+      content[row.route_id] = { ...row, id, jsx };
     }
-    return result;
-  }, {});
+  }
+  return content;
 }
