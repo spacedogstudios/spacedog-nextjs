@@ -4,12 +4,21 @@ compatibility_date = "2024-04-05"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
-[[d1_databases]]
+[[env.preview.d1_databases]]
 binding = "DB"
 database_name = "spacedog"
 database_id = "5dbd9d69-e0a3-45d8-880f-71b23eca8e5f"
 
-[vars]
+[env.preview.vars]
 IMAGE_SOURCE_URL = "https://image.spacedog.com.au:444"
 MAIL_API_URL = "https://api.sendgrid.com/v3/mail/send"
-MAIL_TO = "darren@spacedog.com.au"
+IMAGE_TRANSFORM_URL = "https://spacedog.com.au"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "spacedog"
+database_id = "5dbd9d69-e0a3-45d8-880f-71b23eca8e5f"
+
+[env.production.vars]
+IMAGE_SOURCE_URL = "https://image.spacedog.com.au:444"
+MAIL_API_URL = "https://api.sendgrid.com/v3/mail/send"

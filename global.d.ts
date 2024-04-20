@@ -1,3 +1,7 @@
 import "jest-fetch-mock";
 
-type Nullable<T> = T | null;
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv extends CloudflareEnv {}
+  }
+}
