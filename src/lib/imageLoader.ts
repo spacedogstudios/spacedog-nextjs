@@ -10,6 +10,6 @@ export default function imageLoader({ src, width, quality }: ImageLoaderProps) {
     params.push(`quality=${quality}`);
   }
   const paramsString = params.join(",");
-  const imageTransformUrl = process.env.IMAGE_TRANSFORM_URL ?? "";
-  return `${imageTransformUrl}/cdn-cgi/image/${paramsString}/${process.env.IMAGE_SOURCE_URL}/${normalizeSrc(src)}`;
+  const imageTransformUrl = process.env.NEXT_PUBLIC_IMAGE_TRANSFORM_URL ?? "";
+  return `${imageTransformUrl}/cdn-cgi/image/${paramsString}/${process.env.NEXT_PUBLIC_IMAGE_SOURCE_URL}/${normalizeSrc(src)}`;
 }
