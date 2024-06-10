@@ -11,7 +11,7 @@ import {
 import { Squash as Hamburger } from "hamburger-react";
 
 import { routes } from "@/globals/routes";
-import { useLenis } from "@studio-freight/react-lenis";
+import { useLenis } from "lenis/react";
 import { tvClassName } from "@/lib/utils";
 
 export default function NavMobile({

@@ -5,6 +5,7 @@ const nextConfig = {
     loader: "custom",
     loaderFile: "./src/lib/imageLoader.ts",
   },
+  transpilePackages: ["lenis"],
 };
 
 // Here we use the @cloudflare/next-on-pages next-dev module to allow us to use bindings during local development

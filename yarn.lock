@@ -528,6 +528,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@darkroom.engineering/tempus@npm:^0.0.46":
+  version: 0.0.46
+  resolution: "@darkroom.engineering/tempus@npm:0.0.46"
+  checksum: 10c0/20c48ff5b6a1a0dc1b9af253de3b06ac7d66c6ffefa86a0b2efe06f2a9a96135fd1e7b7ac72e8d347489564521e8ac7aa12e13cb60a1ffd0908cca78b764c584
+  languageName: node
+  linkType: hard
+
 "@edge-runtime/format@npm:2.2.1":
   version: 2.2.1
   resolution: "@edge-runtime/format@npm:2.2.1"
@@ -1773,51 +1780,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@studio-freight/hamo@npm:^0.6.28":
-  version: 0.6.33
-  resolution: "@studio-freight/hamo@npm:0.6.33"
-  dependencies:
-    "@studio-freight/tempus": "npm:^0.0.38"
-    just-debounce-it: "npm:^3.2.0"
-    nanoevents: "npm:^9.0.0"
-  peerDependencies:
-    react: ^18.2.0
-    react-dom: ^18.2.0
-  checksum: 10c0/c452ab77147e06b3b0c086e960c8134490b6c81fa31eb61af72d834962a587c446b424b43ca8a3f468bc6799028b84fee908bd824b65e3de854a4ab6717d1720
-  languageName: node
-  linkType: hard
-
-"@studio-freight/lenis@npm:^1.0.40":
-  version: 1.0.42
-  resolution: "@studio-freight/lenis@npm:1.0.42"
-  checksum: 10c0/edaaa6692a2e365ef6a0ed5b0a6d5f0bf32370fd4f53cd6aeff4cb42e92496127453dc348d4e1e5206425990c15d07c188fdf86f454995e342194c41f2ca270a
-  languageName: node
-  linkType: hard
-
-"@studio-freight/react-lenis@npm:^0.0.47":
-  version: 0.0.47
-  resolution: "@studio-freight/react-lenis@npm:0.0.47"
-  dependencies:
-    "@studio-freight/hamo": "npm:^0.6.28"
-    "@studio-freight/lenis": "npm:^1.0.40"
-    "@types/react": "npm:^18.0.0"
-    clsx: "npm:^2.0.0"
-    react: "npm:^18.0.0"
-    zustand: "npm:^4.4.7"
-  peerDependencies:
-    react: ^17 || ^18
-    react-dom: ^17 || ^18
-  checksum: 10c0/fa41cd2bb065a60cbac9eda32b2f12dc1c3a9af986f2466a45f87088aff5de84be15dc6a28a7a2b4163242e1da5bce2cd5bf428f68f9427e2e2144c30a0a8ecc
-  languageName: node
-  linkType: hard
-
-"@studio-freight/tempus@npm:^0.0.38":
-  version: 0.0.38
-  resolution: "@studio-freight/tempus@npm:0.0.38"
-  checksum: 10c0/5f9b96d950c22e030af87527c5f8342797f6984e9204e78a6ffe3819c00d06cd165015ca72ea5750e52c9300380d8b660ee5d9390556509efe03b258131653a9
-  languageName: node
-  linkType: hard
-
 "@swc/counter@npm:^0.1.3":
   version: 0.1.3
   resolution: "@swc/counter@npm:0.1.3"
@@ -2169,7 +2131,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:18.2.79, @types/react@npm:^18.0.0":
+"@types/react@npm:*, @types/react@npm:18.2.79":
   version: 18.2.79
   resolution: "@types/react@npm:18.2.79"
   dependencies:
@@ -3632,13 +3594,6 @@ __metadata:
     strip-ansi: "npm:^6.0.1"
     wrap-ansi: "npm:^7.0.0"
   checksum: 10c0/4bda0f09c340cbb6dfdc1ed508b3ca080f12992c18d68c6be4d9cf51756033d5266e61ec57529e610dacbf4da1c634423b0c1b11037709cc6b09045cbd815df5
-  languageName: node
-  linkType: hard
-
-"clsx@npm:^2.0.0":
-  version: 2.1.0
-  resolution: "clsx@npm:2.1.0"
-  checksum: 10c0/c09c00ad14f638366ca814097e6cab533dfa1972a358da5b557be487168acbb25b4c1395e89ffa842a8a61ba87a462d2b4885bc9d4f8410b598f3cb339599cdb
   languageName: node
   linkType: hard
 
@@ -8087,13 +8042,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"just-debounce-it@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "just-debounce-it@npm:3.2.0"
-  checksum: 10c0/69e5af960634d6e22f4d9bb9d7d06740bd437e11cfe6c18ee6e2eebbf6c29e5ce3a92bdb3dfbc8680d4e7f0203f5a3bc5e7dee288f249cbe394cff6e991ab692
-  languageName: node
-  linkType: hard
-
 "keyv@npm:^4.5.3":
   version: 4.5.4
   resolution: "keyv@npm:4.5.4"
@@ -8130,6 +8078,23 @@ __metadata:
   dependencies:
     language-subtag-registry: "npm:^0.3.20"
   checksum: 10c0/9ab911213c4bd8bd583c850201c17794e52cb0660d1ab6e32558aadc8324abebf6844e46f92b80a5d600d0fbba7eface2c207bfaf270a1c7fd539e4c3a880bff
+  languageName: node
+  linkType: hard
+
+"lenis@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "lenis@npm:1.1.2"
+  dependencies:
+    "@darkroom.engineering/tempus": "npm:^0.0.46"
+  peerDependencies:
+    react: ">=17.0.0"
+    react-dom: ">=17.0.0"
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 10c0/c276cd6caf6a185da83ca3fd62928245704c0d77d2f908d97b571411ebcaaf665500979b7ee4a74d9d1fb4cda0b550fd0aa6d6289fa13e21f2163165a0e36867
   languageName: node
   linkType: hard
 
@@ -9071,13 +9036,6 @@ __metadata:
     react: "*"
     react-dom: "*"
   checksum: 10c0/7328c973852d2471bd154c61d21392a3d6357f276a7a090b8a179fb06d71ba58c987b04c0bd80efebd87aa4f433428a25e37820e65484b3c4c44b84339b99d87
-  languageName: node
-  linkType: hard
-
-"nanoevents@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "nanoevents@npm:9.0.0"
-  checksum: 10c0/af74c96d0d54ef0ddf6fd163d961b23ec4219ac51d0b70135a2cae49fac1107ddccdcbf7a120601e0bfdd38b15de811f3ce43da5bab967fdee9684e52e4cb5b7
   languageName: node
   linkType: hard
 
@@ -10233,7 +10191,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.0.0, react@npm:^18.2.0":
+"react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
@@ -10929,7 +10887,6 @@ __metadata:
     "@cloudflare/workers-types": "npm:^4.20240208.0"
     "@hookform/resolvers": "npm:^3.3.4"
     "@miniflare/d1": "npm:^2.14.2"
-    "@studio-freight/react-lenis": "npm:^0.0.47"
     "@testing-library/jest-dom": "npm:^6.4.2"
     "@testing-library/react": "npm:^15.0.2"
     "@types/jest": "npm:^29.5.12"
@@ -10952,6 +10909,7 @@ __metadata:
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
     jest-fetch-mock: "npm:^3.0.3"
+    lenis: "npm:^1.1.2"
     next: "npm:^14.1.0"
     postcss: "npm:8.4.38"
     prettier: "npm:3.2.5"
@@ -12144,15 +12102,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.2.0":
-  version: 1.2.0
-  resolution: "use-sync-external-store@npm:1.2.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/ac4814e5592524f242921157e791b022efe36e451fe0d4fd4d204322d5433a4fc300d63b0ade5185f8e0735ded044c70bcf6d2352db0f74d097a238cebd2da02
-  languageName: node
-  linkType: hard
-
 "util-deprecate@npm:^1.0.1, util-deprecate@npm:^1.0.2":
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
@@ -12692,26 +12641,6 @@ __metadata:
   version: 3.22.5
   resolution: "zod@npm:3.22.5"
   checksum: 10c0/efa969e9c0a836e4c299ff86f6db7ccf5e14c5349586694e999b7beb53fcc797b9292bc3179b0b5f43e42bcc4ae184bf202fde3f28694bf9fb8b567779c2e12b
-  languageName: node
-  linkType: hard
-
-"zustand@npm:^4.4.7":
-  version: 4.5.2
-  resolution: "zustand@npm:4.5.2"
-  dependencies:
-    use-sync-external-store: "npm:1.2.0"
-  peerDependencies:
-    "@types/react": ">=16.8"
-    immer: ">=9.0.6"
-    react: ">=16.8"
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-    immer:
-      optional: true
-    react:
-      optional: true
-  checksum: 10c0/aee26f11facebb39b016e89539f72a72c2c00151208907fc909c3cedd455728240e09e01d98ebd3b63a2a3518a5917eac5de6c853743ca55a1655296d750bb48
   languageName: node
   linkType: hard
 

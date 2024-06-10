@@ -1,7 +1,7 @@
 "use client";
 
 import { routes } from "@/globals/routes";
-import { useLenis } from "@studio-freight/react-lenis";
+import { useLenis } from "lenis/react";
 import { tvClassName } from "@/lib/utils";
 import { ComponentPropsWithoutRef } from "react";
 

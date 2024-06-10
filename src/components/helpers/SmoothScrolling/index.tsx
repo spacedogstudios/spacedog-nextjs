@@ -1,7 +1,7 @@
 "use client";
 
 import { ComponentPropsWithoutRef } from "react";
-import { ReactLenis } from "@studio-freight/react-lenis";
+import { ReactLenis } from "lenis/react";
 
 function SmoothScrolling({
   children,
