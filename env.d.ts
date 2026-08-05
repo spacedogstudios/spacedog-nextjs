@@ -3,8 +3,6 @@
 
 interface CloudflareEnv {
   ENVIRONMENT: string;
-  IMAGE_SOURCE_URL: string;
-  IMAGE_TRANSFORM_URL?: string;
   MAIL_API_URL: string;
   MAIL_TO: string;
   MAIL_API_KEY: string;

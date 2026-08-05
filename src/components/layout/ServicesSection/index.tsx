@@ -36,7 +36,7 @@ export default function ServicesSection({
           <div className={blockClassName}>
             <div className={iconClassName}>
               <Image
-                src="app-icon.svg"
+                src="/app-icon.svg"
                 alt="App Development"
                 fill
                 style={imageStyle}
@@ -47,7 +47,7 @@ export default function ServicesSection({
           <div className={blockClassName}>
             <div className={iconClassName}>
               <Image
-                src="web-icon.svg"
+                src="/web-icon.svg"
                 alt="Web Development"
                 fill
                 style={imageStyle}
