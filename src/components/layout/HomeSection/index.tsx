@@ -37,7 +37,7 @@ export default function HomeSection({ className, tagline }: Props) {
       >
         <Image
           priority
-          src="bg-stars.jpg"
+          src="/bg-stars.jpg"
           alt=""
           role="presentation"
           placeholder="blur"
@@ -55,7 +55,7 @@ export default function HomeSection({ className, tagline }: Props) {
       <div className="absolute inset-0">
         <Image
           priority
-          src="bg-trees.png"
+          src="/bg-trees.png"
           alt=""
           role="presentation"
           fill

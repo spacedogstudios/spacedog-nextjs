@@ -2,8 +2,7 @@ import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
 
 const nextConfig = {
   images: {
-    loader: "custom",
-    loaderFile: "./src/lib/imageLoader.ts",
+    unoptimized: true,
   },
   transpilePackages: ["lenis"],
 };

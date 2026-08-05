@@ -33,7 +33,7 @@ export default function Header({
       <div className="col-gutter">
         <div className="flex h-16 items-center justify-between">
           <a className="site-logo" href="/">
-            <Image src="sub-logo.png" alt="Homepage" width={190} height={26} />
+            <Image src="/sub-logo.png" alt="Homepage" width={190} height={26} />
           </a>
           <Nav />
         </div>
