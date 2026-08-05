@@ -28,25 +28,10 @@ export async function POST(request: Request) {
   const emailBody = `Name: ${escapeUTF8(name)}\nEmail: ${escapeUTF8(email)}\nMessaqe: ${escapeUTF8(message)}`;
 
   const data = {
-    personalizations: [
-      {
-        to: [
-          {
-            email: process.env.MAIL_TO,
-          },
-        ],
-      },
-    ],
-    from: {
-      email: process.env.MAIL_TO,
-    },
+    from: process.env.MAIL_TO,
+    to: [process.env.MAIL_TO],
     subject: "Space Dog Contact Form",
-    content: [
-      {
-        type: "text/plain",
-        value: emailBody,
-      },
-    ],
+    text: emailBody,
   };
 
   const options = {
