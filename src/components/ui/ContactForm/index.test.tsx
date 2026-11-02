@@ -131,9 +131,51 @@ describe("ContactSection", () => {
 
     await waitFor(() => expect(screen.queryAllByRole("alert")).toHaveLength(0));
     expect(fetchMock.mock.calls.length).toEqual(1);
-    expect(fetchMock.mock.calls[0][0]).toEqual("/api/sendgrid");
+    expect(fetchMock.mock.calls[0][0]).toEqual("/api/contact");
     expect(screen.getByLabelText("name")).toHaveValue("");
     expect(screen.getByLabelText("email")).toHaveValue("");
     expect(screen.getByLabelText("message")).toHaveValue("");
+    expect(await screen.findByRole("status")).toHaveTextContent("Message sent");
+  });
+
+  it("should show an error notification and keep values when sending fails", async () => {
+    fetchMock.mockResponseOnce(
+      JSON.stringify({
+        errors: { root: { message: "Sorry, your message couldn't be sent" } },
+      }),
+      { status: 502 },
+    );
+    fetchMock.mockResponseOnce(JSON.stringify({ success: true }));
+    render(<ContactForm />);
+
+    fireEvent.input(screen.getByLabelText("name"), {
+      target: {
+        value: "name",
+      },
+    });
+
+    fireEvent.input(screen.getByLabelText("email"), {
+      target: {
+        value: "test@mail.com",
+      },
+    });
+
+    fireEvent.input(screen.getByLabelText("message"), {
+      target: {
+        value: "message",
+      },
+    });
+
+    fireEvent.submit(screen.getByRole("button", { name: "Submit" }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      "Sorry, your message couldn't be sent",
+    );
+    expect(screen.getByLabelText("message")).toHaveValue("message");
+
+    fireEvent.click(screen.getByRole("button", { name: "Try again" }));
+
+    expect(await screen.findByRole("status")).toHaveTextContent("Message sent");
+    expect(fetchMock.mock.calls.length).toEqual(2);
   });
 });

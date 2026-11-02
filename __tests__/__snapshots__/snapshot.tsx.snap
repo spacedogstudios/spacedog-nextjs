@@ -18,7 +18,7 @@ exports[`renders homepage unchanged 1`] = `
           <img
             alt="Homepage"
             height="26"
-            src="sub-logo.png"
+            src="/sub-logo.png"
             width="190"
           />
         </a>
@@ -69,16 +69,16 @@ exports[`renders homepage unchanged 1`] = `
     >
       <div
         class="absolute inset-0"
-        style="transform: translateY(0%) translateZ(0);"
+        style="transform: none;"
       >
         <img
           alt=""
-          src="bg-stars.jpg"
+          src="/bg-stars.jpg"
         />
       </div>
       <h1
         class="grid col-content text-white text-4xl md:text-6xl relative max-w-4xl pb-36"
-        style="transform: translateY(0%) translateZ(0);"
+        style="transform: none;"
       >
         We are a creative group of people who design digital experiences.
       </h1>
@@ -87,7 +87,7 @@ exports[`renders homepage unchanged 1`] = `
       >
         <img
           alt=""
-          src="bg-trees.png"
+          src="/bg-trees.png"
         />
       </div>
     </section>
@@ -100,7 +100,7 @@ exports[`renders homepage unchanged 1`] = `
       >
         <div
           class="flex flex-col items-center pb-8"
-          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+          style="opacity: 0; transform: translateY(50%);"
         >
           <h1
             class="font-bold text-xl uppercase pb-4 text-black"
@@ -118,7 +118,7 @@ exports[`renders homepage unchanged 1`] = `
         </div>
         <div
           class="flex flex-col items-center"
-          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+          style="opacity: 0; transform: translateY(50%);"
         >
           <div
             class="[&_p]:text-2xl [&_p]:leading-loose [&_p]:font-light [&_p]:text-white [&_p]:text-center"
@@ -139,7 +139,7 @@ exports[`renders homepage unchanged 1`] = `
       >
         <div
           class="flex flex-col items-center pb-8"
-          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+          style="opacity: 0; transform: translateY(50%);"
         >
           <h1
             class="font-bold text-xl uppercase pb-4 text-black"
@@ -157,7 +157,7 @@ exports[`renders homepage unchanged 1`] = `
         </div>
         <div
           class="flex flex-col items-center"
-          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+          style="opacity: 0; transform: translateY(50%);"
         >
           <div
             class="flex flex-col pt-8 lg:grid lg:grid-cols-2 gap-16"
@@ -170,7 +170,7 @@ exports[`renders homepage unchanged 1`] = `
               >
                 <img
                   alt="App Development"
-                  src="app-icon.svg"
+                  src="/app-icon.svg"
                 />
               </div>
               <div
@@ -189,7 +189,7 @@ exports[`renders homepage unchanged 1`] = `
               >
                 <img
                   alt="Web Development"
-                  src="web-icon.svg"
+                  src="/web-icon.svg"
                 />
               </div>
               <div
@@ -213,7 +213,7 @@ exports[`renders homepage unchanged 1`] = `
       >
         <div
           class="flex flex-col items-center pb-8"
-          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+          style="opacity: 0; transform: translateY(50%);"
         >
           <h1
             class="font-bold text-xl uppercase pb-4 text-black"
@@ -231,7 +231,7 @@ exports[`renders homepage unchanged 1`] = `
         </div>
         <div
           class="flex flex-col items-center"
-          style="opacity: 0; transform: translateY(50%) translateZ(0);"
+          style="opacity: 0; transform: translateY(50%);"
         >
           <div
             class="text-left pt-4 w-full max-w-7xl"
@@ -293,6 +293,10 @@ exports[`renders homepage unchanged 1`] = `
                   Submit
                 </div>
               </button>
+              <div
+                aria-live="polite"
+                class="pointer-events-none fixed inset-x-4 bottom-6 z-50 flex justify-center"
+              />
             </form>
           </div>
         </div>

@@ -3,7 +3,7 @@
 import {
   ComponentPropsWithoutRef,
   ReactNode,
-  useEffect,
+  useCallback,
   useState,
 } from "react";
 import { useForm, FieldErrors } from "react-hook-form";
@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { contactSchema, TContactSchema } from "@/globals/schema";
 import Spinner from "@/components/ui/Spinner";
+import Toast, { ToastData } from "@/components/ui/Toast";
 import { tv } from "tailwind-variants";
 
 type FetchResponse = Response & {
@@ -35,7 +36,7 @@ function Message(
 }
 
 async function sendData(data: TContactSchema): Promise<FetchResponse> {
-  return await fetch("/api/sendgrid", {
+  return await fetch("/api/contact", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -47,7 +48,8 @@ async function sendData(data: TContactSchema): Promise<FetchResponse> {
 export default function ContactForm({
   className,
 }: ComponentPropsWithoutRef<"form">) {
-  const [submittedSuccessfully, setSubmittedSuccessfully] = useState(false);
+  const [toast, setToast] = useState<ToastData | null>(null);
+  const dismissToast = useCallback(() => setToast(null), []);
   const {
     register,
     handleSubmit,
@@ -55,32 +57,39 @@ export default function ContactForm({
     reset,
     setError,
     clearErrors,
-    watch,
   } = useForm<TContactSchema>({
     resolver: zodResolver(contactSchema),
   });
 
-  useEffect(() => {
-    const subscription = watch(() => setSubmittedSuccessfully(false));
-    return () => subscription.unsubscribe();
-  }, [watch]);
+  const showError = (message: string) =>
+    setToast({
+      variant: "error",
+      title: "Message not sent",
+      message: `${message.replace(/\.$/, "")}. Your message is still in the form.`,
+      action: {
+        label: "Try again",
+        onClick: () => {
+          setToast(null);
+          handleSubmit(onSubmit)();
+        },
+      },
+    });
 
   const onSubmit = async (data: TContactSchema) => {
     try {
       clearErrors();
+      setToast(null);
 
       const response = await sendData(data);
 
       const responseData: FetchResponse = await response.json();
 
       if (!response.ok) {
-        setError("root", {
-          type: "server",
-          message:
-            responseData?.errors?.root?.message ||
+        showError(
+          responseData?.errors?.root?.message ||
             response.statusText ||
-            "An unknown error occurred.",
-        });
+            "An unknown error occurred",
+        );
 
         return;
       }
@@ -104,46 +113,29 @@ export default function ContactForm({
             message: errors.message.message,
           });
         } else {
-          throw new Error(errors.root?.message || "An unknown error occurred.");
+          throw new Error(errors.root?.message || "An unknown error occurred");
         }
 
         return;
       }
 
       reset();
-      setSubmittedSuccessfully(true);
+      setToast({
+        variant: "success",
+        title: "Message sent",
+        message: "Thanks for getting in touch. You'll hear from us soon!",
+      });
     } catch (error) {
-      const errorMessage: string =
+      showError(
         error instanceof Error && error.message
           ? error.message
-          : "An unknown error occurred.";
-      setError("root", {
-        type: "server",
-        message: errorMessage,
-      });
+          : "An unknown error occurred",
+      );
     }
   };
 
-  const formatRootError = (message: string) => (
-    <>
-      {message}. You can <button className="underline">submit again</button> or{" "}
-      <button className="underline" onClick={() => reset()}>
-        reset form
-      </button>{" "}
-      and try again.
-    </>
-  );
-
   return (
     <form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
-      {errors.root?.message &&
-        Message(formatRootError(errors.root.message), "pt-4")}
-      {submittedSuccessfully &&
-        Message(
-          "Message sent. You'll hear from us soon!",
-          "text-white text-center pt-4",
-          "status",
-        )}
       <label className="sr-only" htmlFor="name">
         name
       </label>
@@ -204,6 +196,7 @@ export default function ContactForm({
           Submit
         </div>
       </button>
+      <Toast toast={toast} onDismiss={dismissToast} />
     </form>
   );
 }

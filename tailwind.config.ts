@@ -22,6 +22,15 @@ const config: Config = {
         "-10": "-10",
         "-20": "-20",
       },
+      keyframes: {
+        "toast-in": {
+          from: { opacity: "0", transform: "translateY(1rem)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "toast-in": "toast-in 200ms ease-out",
+      },
     },
   },
   plugins: [],
