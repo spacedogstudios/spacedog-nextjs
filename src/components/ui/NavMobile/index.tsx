@@ -35,13 +35,13 @@ export default function NavMobile({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed right-0 top-16 h-screen overflow-hidden bg-black bg-opacity-80 w-72 z-20"
+              className="fixed right-0 top-16 h-screen overflow-hidden bg-black/80 w-72 z-20"
             >
               <ul role="menubar">
                 {routes.map(({ id, title, href }, idx) => {
                   const handleClick = () => {
                     setOpen(false);
-                    lenis && lenis.scrollTo(href);
+                    lenis?.scrollTo(href);
                   };
 
                   return (

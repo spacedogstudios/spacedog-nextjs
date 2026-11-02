@@ -23,7 +23,7 @@ const toastClass = tv({
     base: "pointer-events-auto flex w-full max-w-md items-start gap-4 border-l-4 bg-neutral-900 p-5 text-white shadow-2xl shadow-black/50 motion-safe:animate-toast-in",
     icon: "mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full",
     action:
-      "mt-4 border border-white/40 px-4 py-1.5 text-base text-white transition-colors hover:border-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500",
+      "mt-4 border border-white/40 px-4 py-1.5 text-base text-white transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500",
   },
   variants: {
     variant: {

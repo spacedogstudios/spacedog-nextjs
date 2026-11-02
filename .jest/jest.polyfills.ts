@@ -1,4 +1,4 @@
-import { TextDecoder, TextEncoder  } from "node:util";
+import { TextDecoder, TextEncoder } from "node:util";
 
 Object.defineProperties(globalThis, {
   TextDecoder: { value: TextDecoder },
@@ -18,9 +18,11 @@ Object.defineProperties(globalThis, {
   },
   IntersectionObserver: {
     writable: true,
-    value: jest.fn().mockImplementation((query) => ({
+    value: jest.fn().mockImplementation(() => ({
       observe: jest.fn(),
       unobserve: jest.fn(),
+      disconnect: jest.fn(),
+      takeRecords: jest.fn(() => []),
     })),
-  }
+  },
 });

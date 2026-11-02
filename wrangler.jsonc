@@ -1,0 +1,31 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "spacedog",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      // Self-reference used by OpenNext for caching; must match "name" above
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "spacedog"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "spacedog",
+      "database_id": "5dbd9d69-e0a3-45d8-880f-71b23eca8e5f"
+    }
+  ],
+  "vars": {
+    "MAIL_API_URL": "https://api.resend.com/emails"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

@@ -1,4 +1,4 @@
-const path = require("path");
+import path from "node:path";
 
 const buildPrettierCommand = (filenames) =>
   `prettier --write ${filenames
@@ -6,14 +6,16 @@ const buildPrettierCommand = (filenames) =>
     .join(" ")}`;
 
 const buildEslintCommand = (filenames) =>
-  `next lint --fix --file ${filenames
+  `eslint --fix ${filenames
     .map((f) => path.relative(process.cwd(), f))
-    .join(" --file ")}`;
+    .join(" ")}`;
 
-module.exports = {
+const config = {
   "*.{js,jsx,ts,tsx}": [
     buildPrettierCommand,
     buildEslintCommand,
     "jest --bail --findRelatedTests --passWithNoTests",
   ],
 };
+
+export default config;

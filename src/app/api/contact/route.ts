@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
-
-export const runtime = "edge";
-
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { escapeUTF8 } from "entities";
 import { contactSchema } from "@/globals/schema";
 
@@ -24,12 +22,13 @@ export async function POST(request: Request) {
   }
 
   const { name, email, message } = result.data;
+  const env = getCloudflareContext().env;
 
   const emailBody = `Name: ${escapeUTF8(name)}\nEmail: ${escapeUTF8(email)}\nMessage: ${escapeUTF8(message)}`;
 
   const data = {
-    from: process.env.MAIL_TO,
-    to: [process.env.MAIL_TO],
+    from: env.MAIL_TO,
+    to: [env.MAIL_TO],
     reply_to: email,
     subject: "Space Dog Contact Form",
     text: emailBody,
@@ -39,13 +38,13 @@ export async function POST(request: Request) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + process.env.MAIL_API_KEY,
+      Authorization: "Bearer " + env.MAIL_API_KEY,
     },
     body: JSON.stringify(data),
   };
 
   try {
-    const url = process.env.MAIL_API_URL;
+    const url = env.MAIL_API_URL;
     if (!url) throw new Error("No email service defined.");
 
     const response = await fetch(url, options);
