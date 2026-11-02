@@ -25,11 +25,12 @@ export async function POST(request: Request) {
 
   const { name, email, message } = result.data;
 
-  const emailBody = `Name: ${escapeUTF8(name)}\nEmail: ${escapeUTF8(email)}\nMessaqe: ${escapeUTF8(message)}`;
+  const emailBody = `Name: ${escapeUTF8(name)}\nEmail: ${escapeUTF8(email)}\nMessage: ${escapeUTF8(message)}`;
 
   const data = {
     from: process.env.MAIL_TO,
     to: [process.env.MAIL_TO],
+    reply_to: email,
     subject: "Space Dog Contact Form",
     text: emailBody,
   };
@@ -47,7 +48,18 @@ export async function POST(request: Request) {
     const url = process.env.MAIL_API_URL;
     if (!url) throw new Error("No email service defined.");
 
-    await fetch(url, options);
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      console.error(
+        `Email service responded ${response.status}: ${await response.text()}`,
+      );
+      const serviceError: FetchError = new Error(
+        "Sorry, your message couldn't be sent",
+      );
+      serviceError.statusCode = 502;
+      throw serviceError;
+    }
+
     return NextResponse.json({ success: true });
   } catch (error) {
     const fetchError = error as FetchError;
