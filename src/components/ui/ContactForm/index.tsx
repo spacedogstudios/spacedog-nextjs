@@ -6,17 +6,17 @@ import {
   useCallback,
   useState,
 } from "react";
-import { useForm, FieldErrors } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { contactSchema, TContactSchema } from "@/globals/schema";
+import {
+  contactSchema,
+  type ContactResponse,
+  type TContactSchema,
+} from "@/globals/schema";
 import Spinner from "@/components/ui/Spinner";
 import Toast, { ToastData } from "@/components/ui/Toast";
 import { tv } from "tailwind-variants";
-
-type FetchResponse = Response & {
-  errors?: FieldErrors<TContactSchema>;
-};
 
 const messageClass = tv({ base: "text-xl text-red-500 pb-4 -mt-2" });
 const inputClass =
@@ -35,7 +35,9 @@ function Message(
   );
 }
 
-async function sendData(data: TContactSchema): Promise<FetchResponse> {
+const FIELDS = ["name", "email", "message"] as const;
+
+async function sendData(data: TContactSchema): Promise<Response> {
   return await fetch("/api/contact", {
     method: "POST",
     headers: {
@@ -81,41 +83,23 @@ export default function ContactForm({
       setToast(null);
 
       const response = await sendData(data);
+      const responseData = (await response
+        .json()
+        .catch(() => ({}))) as ContactResponse;
+      const errors = responseData.errors ?? {};
 
-      const responseData: FetchResponse = await response.json();
+      const fieldsWithErrors = FIELDS.filter((field) => errors[field]);
+      fieldsWithErrors.forEach((field) =>
+        setError(field, { type: "server", message: errors[field]?.message }),
+      );
+      if (fieldsWithErrors.length) return;
 
-      if (!response.ok) {
+      if (!response.ok || errors.root) {
         showError(
-          responseData?.errors?.root?.message ||
+          errors.root?.message ||
             response.statusText ||
             "An unknown error occurred",
         );
-
-        return;
-      }
-
-      if (responseData.errors) {
-        const errors: FieldErrors<TContactSchema> = responseData.errors;
-
-        if (errors.name) {
-          setError("name", {
-            type: "server",
-            message: errors.name.message,
-          });
-        } else if (errors.email) {
-          setError("email", {
-            type: "server",
-            message: errors.email.message,
-          });
-        } else if (errors.message) {
-          setError("message", {
-            type: "server",
-            message: errors.message.message,
-          });
-        } else {
-          throw new Error(errors.root?.message || "An unknown error occurred");
-        }
-
         return;
       }
 
@@ -182,6 +166,15 @@ export default function ContactForm({
         }
       />
       {errors.message && Message(errors.message.message, "-mt-6 mb-4")}
+      <div aria-hidden="true" className="absolute -left-[9999px]">
+        <label htmlFor="website">Leave this field empty</label>
+        <input
+          id="website"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register("website")}
+        />
+      </div>
       <button
         disabled={isSubmitting}
         className="relative flex justify-center items-center w-full h-16 bg-sky-700 uppercase text-xl text-white"

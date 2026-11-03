@@ -284,6 +284,22 @@ exports[`renders homepage unchanged 1`] = `
                 placeholder="Your message"
                 rows="4"
               />
+              <div
+                aria-hidden="true"
+                class="absolute -left-[9999px]"
+              >
+                <label
+                  for="website"
+                >
+                  Leave this field empty
+                </label>
+                <input
+                  autocomplete="off"
+                  id="website"
+                  name="website"
+                  tabindex="-1"
+                />
+              </div>
               <button
                 class="relative flex justify-center items-center w-full h-16 bg-sky-700 uppercase text-xl text-white"
               >

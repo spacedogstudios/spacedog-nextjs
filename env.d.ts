@@ -5,6 +5,7 @@ interface CloudflareEnv {
   ASSETS: Fetcher;
   WORKER_SELF_REFERENCE: Fetcher;
   DB: D1Database;
+  CONTACT_RATE_LIMITER: RateLimit;
   MAIL_API_URL: string;
   MAIL_API_KEY: string;
   MAIL_TO: string;
