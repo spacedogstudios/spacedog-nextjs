@@ -2,13 +2,14 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Main from "@/components/layout/Main";
 import parseContent from "@/lib/parseContent";
-import { content, getDb } from "@/drizzle";
+import { getContentRows } from "@/lib/getContentRows";
 
-// Content lives in D1, so render on each request rather than at build time.
+// Content lives in D1 (cached at the edge), so render on each request
+// rather than at build time.
 export const dynamic = "force-dynamic";
 
 async function getContent() {
-  const rows = await getDb().select().from(content).all();
+  const rows = await getContentRows();
 
   // An empty table would render a blank page, so fail loudly instead.
   if (!rows.length) throw new Error("No content found in the database");
