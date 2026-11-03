@@ -30,21 +30,28 @@ export default function HomeSection({ className, tagline }: Props) {
       className={tvClassName(containerClassName, className)}
     >
       <motion.div
-        className="absolute inset-0"
+        className="absolute inset-0 bg-cover bg-bottom"
         style={{
           y: backgroundY,
+          // Tiny blurred preview shown until the full image loads.
+          backgroundImage: `url(${starsDataUrl})`,
         }}
       >
-        <Image
-          priority
-          src="/bg-stars.jpg"
-          alt=""
-          role="presentation"
-          placeholder="blur"
-          blurDataURL={starsDataUrl}
-          fill
-          style={imageStyle}
-        />
+        {/* next/image can't serve responsive sizes with images.unoptimized,
+            so use <picture> with pre-sized WebP files and a JPEG fallback. */}
+        <picture>
+          <source
+            type="image/webp"
+            srcSet="/images/bg-stars-1280.webp 1280w, /images/bg-stars-1920.webp 1920w, /images/bg-stars-2560.webp 2560w"
+            sizes="100vw"
+          />
+          <img
+            src="/images/bg-stars-1920.jpg"
+            alt=""
+            fetchPriority="high"
+            className="absolute inset-0 h-full w-full object-cover object-bottom"
+          />
+        </picture>
       </motion.div>
       <motion.h1
         style={{ y: textY }}

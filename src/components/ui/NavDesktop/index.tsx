@@ -9,7 +9,7 @@ export default function NavDesktop({
   className,
 }: ComponentPropsWithoutRef<"ul">) {
   const lenis = useLenis();
-  const containerClassName = "lg:flex lg:items-center gap-5 text-sm";
+  const containerClassName = "hidden lg:flex lg:items-center gap-5 text-sm";
 
   return (
     <ul role="menubar" className={tvClassName(containerClassName, className)}>

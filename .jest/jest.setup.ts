@@ -17,6 +17,11 @@ const mockEnv = {
   MAIL_TO: "test@example.com",
 };
 
+const mockContext = {
+  env: mockEnv,
+  ctx: { waitUntil: () => {} },
+};
+
 jest.mock("@opennextjs/cloudflare", () => ({
-  getCloudflareContext: () => ({ env: mockEnv }),
+  getCloudflareContext: () => mockContext,
 }));

@@ -33,6 +33,16 @@ bun run preview                  # http://localhost:8787
 
 `bun run db:local` drops and recreates the local `content` table from `src/migrations/schema.sql`. The data lives in `.wrangler/` (git-ignored) and is separate from production.
 
+## Editing content
+
+Page text lives in the production D1 database `spacedog` (table `content`, markdown in `body`). To change it, run SQL against it, e.g. `bunx wrangler d1 execute spacedog --remote --command "UPDATE content SET tagline = '...' WHERE route_id = 'about'"` (needs `wrangler login`).
+
+The site caches this content at each Cloudflare location for up to an hour (`src/lib/getContentRows.ts`), so edits appear within the hour. To see them immediately, purge the cache in the Cloudflare dashboard: `spacedog.com.au` → Caching → Configuration → Purge Cache → Custom Purge → URL `https://spacedog.com.au/_cache/content`.
+
+## Images
+
+The hero background is served as pre-sized WebP files with a JPEG fallback from `public/images/`. If you replace it, regenerate the 1280/1920/2560px WebP files and the 1920px JPEG (e.g. with `sharp`).
+
 ## Checks
 
 ```bash
