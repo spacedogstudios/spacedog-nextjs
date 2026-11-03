@@ -3,7 +3,7 @@
 import { routes } from "@/globals/routes";
 import { useLenis } from "lenis/react";
 import { useReducedMotion } from "framer-motion";
-import { tvClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { ComponentPropsWithoutRef } from "react";
 
 export default function NavDesktop({
@@ -14,7 +14,7 @@ export default function NavDesktop({
   const containerClassName = "hidden lg:flex lg:items-center gap-5 text-sm";
 
   return (
-    <ul className={tvClassName(containerClassName, className)}>
+    <ul className={cn(containerClassName, className)}>
       {routes.map(({ id, title, href }) => {
         const handleClick = () => {
           lenis?.scrollTo(href, { immediate: prefersReducedMotion });

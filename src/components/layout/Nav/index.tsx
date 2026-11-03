@@ -1,6 +1,6 @@
 import NavDesktop from "@/components/ui/NavDesktop";
 import NavMobile from "@/components/ui/NavMobile";
-import { tvClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { ComponentPropsWithoutRef } from "react";
 
 // Both navs are rendered and CSS shows the right one (NavDesktop is
@@ -10,7 +10,7 @@ export default function Nav({ className }: ComponentPropsWithoutRef<"nav">) {
   const containerClassName = "flex justify-end";
 
   return (
-    <nav className={tvClassName(containerClassName, className)}>
+    <nav className={cn(containerClassName, className)}>
       <NavDesktop />
       <NavMobile />
     </nav>

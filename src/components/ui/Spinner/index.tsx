@@ -1,4 +1,4 @@
-import { tvClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { ComponentPropsWithoutRef } from "react";
 
 type Props = ComponentPropsWithoutRef<"div"> & {
@@ -10,10 +10,10 @@ export default function Spinner({ className, spinnerClassName }: Props) {
   const spinnerBaseClassName =
     "w-full h-full text-gray-200 animate-spin dark:text-gray-600 fill-blue-600";
   return (
-    <div className={tvClassName(containerClassName, className)}>
+    <div className={cn(containerClassName, className)}>
       <svg
         aria-hidden="true"
-        className={tvClassName(spinnerBaseClassName, spinnerClassName)}
+        className={cn(spinnerBaseClassName, spinnerClassName)}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

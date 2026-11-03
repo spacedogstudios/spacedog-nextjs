@@ -11,7 +11,7 @@ import {
 import { SECTION_ID } from "@/globals/sections";
 import type { SectionProps as Props } from "@/types/main";
 import { starsDataUrl } from "@/globals/base64";
-import { tvClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 export default function HomeSection({ className, tagline }: Props) {
   const ref = useRef(null);
@@ -34,7 +34,7 @@ export default function HomeSection({ className, tagline }: Props) {
     <section
       id={SECTION_ID.HOME}
       ref={ref}
-      className={tvClassName(containerClassName, className)}
+      className={cn(containerClassName, className)}
     >
       <motion.div
         className="absolute inset-0 bg-cover bg-bottom"

@@ -1,9 +1,7 @@
-"use client";
-
 import Section from "@/components/layout/Section";
 import type { SectionProps as Props } from "@/types/main";
 import ContactForm from "@/components/ui/ContactForm";
-import { tvClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 export default function ContactSection({
   id,
@@ -16,7 +14,7 @@ export default function ContactSection({
   return (
     <Section
       id={id}
-      className={tvClassName(containerClassName, className)}
+      className={cn(containerClassName, className)}
       subheading={subheading}
       tagline={tagline}
     >

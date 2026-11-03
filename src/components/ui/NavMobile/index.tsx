@@ -13,7 +13,7 @@ import { Squash as Hamburger } from "hamburger-react";
 
 import { routes } from "@/globals/routes";
 import { useLenis } from "lenis/react";
-import { tvClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 export default function NavMobile({
   className,
@@ -28,7 +28,7 @@ export default function NavMobile({
 
   return (
     <LazyMotion features={domAnimation}>
-      <div ref={ref} className={tvClassName(containerClassName, className)}>
+      <div ref={ref} className={cn(containerClassName, className)}>
         <Hamburger
           toggled={isOpen}
           size={24}

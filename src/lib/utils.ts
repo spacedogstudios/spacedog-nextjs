@@ -1,9 +1,6 @@
-import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
-export function tvClassName(
-  baseClassName: string,
-  customClassName: string | undefined,
-) {
-  const tvObject = tv({ base: baseClassName });
-  return customClassName ? tvObject({ class: customClassName }) : tvObject();
+// Joins class names, letting later Tailwind classes override earlier ones.
+export function cn(...classNames: (string | undefined)[]) {
+  return twMerge(classNames);
 }
