@@ -330,16 +330,6 @@ exports[`renders homepage unchanged 1`] = `
       >
         © Space Dog Studios
       </p>
-      <p
-        class="text-gray-400 flex-none text-sm sm:text-base"
-      >
-        Design inspired by 
-        <a
-          href="https://www.colorlib.com/"
-        >
-          Colorlib
-        </a>
-      </p>
     </div>
   </footer>
 </div>
