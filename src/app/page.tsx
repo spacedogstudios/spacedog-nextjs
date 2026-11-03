@@ -1,7 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Main from "@/components/layout/Main";
-import type { Content } from "@/types/main";
 import parseContent from "@/lib/parseContent";
 import { content, getDb } from "@/drizzle";
 
@@ -11,21 +10,14 @@ export const dynamic = "force-dynamic";
 async function getContent() {
   const rows = await getDb().select().from(content).all();
 
-  if (rows && rows.length) return await parseContent(rows);
+  // An empty table would render a blank page, so fail loudly instead.
+  if (!rows.length) throw new Error("No content found in the database");
+
+  return parseContent(rows);
 }
 
 export default async function Home() {
-  let content: Record<string, Content>;
-
-  try {
-    content = (await getContent()) ?? {};
-    if (!content) {
-      throw new Error("Database error");
-    }
-  } catch (error) {
-    // trigger 500 page in production
-    throw error;
-  }
+  const content = await getContent();
 
   return (
     <>
