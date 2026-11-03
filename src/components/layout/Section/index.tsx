@@ -1,9 +1,7 @@
-"use client";
-
 import Subheading from "@/components/ui/Subheading";
 import type { SectionProps as Props } from "@/types/main";
 import SectionContent from "@/components/ui/SectionContent";
-import { tvClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 export default function Section({
   id,
@@ -15,7 +13,7 @@ export default function Section({
   const containerClassName = "grid grid-cols-small md:grid-cols-main";
 
   return (
-    <section id={id} className={tvClassName(containerClassName, className)}>
+    <section id={id} className={cn(containerClassName, className)}>
       <div className="grid col-content py-32">
         {subheading && (
           <Subheading

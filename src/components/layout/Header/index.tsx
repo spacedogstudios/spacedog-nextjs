@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Nav from "@/components/layout/Nav";
-import { tvClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 export default function Header({
   className,
@@ -29,7 +29,7 @@ export default function Header({
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.25, ease: "easeInOut" }}
-      className={tvClassName(containerClassName, className)}
+      className={cn(containerClassName, className)}
     >
       <div className="col-gutter">
         <div className="flex h-16 items-center justify-between">

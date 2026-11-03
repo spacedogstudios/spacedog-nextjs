@@ -5,7 +5,7 @@ import { tv } from "tailwind-variants";
 
 import type { SectionProps as Props } from "@/types/main";
 import { SECTION_ID } from "@/globals/sections";
-import { tvClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 const sections = {
   [SECTION_ID.ABOUT]: {
@@ -60,7 +60,7 @@ export default function SectionTitle({
       transition={{ duration: 0.5, ease: "easeOut" }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={tvClassName(containerClassName, className)}
+      className={cn(containerClassName, className)}
     >
       <p className={subheadingSlot()}>{subheading}</p>
       <h2 className={taglineSlot()}>{tagline}</h2>

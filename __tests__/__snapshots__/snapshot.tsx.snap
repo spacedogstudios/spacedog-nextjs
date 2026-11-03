@@ -139,7 +139,7 @@ exports[`renders homepage unchanged 1`] = `
     </section>
     <section
       class="grid grid-cols-small md:grid-cols-main bg-sky-700"
-      id="2"
+      id="about"
     >
       <div
         class="grid col-content py-32"
@@ -178,7 +178,7 @@ exports[`renders homepage unchanged 1`] = `
     </section>
     <section
       class="grid grid-cols-small md:grid-cols-main bg-white"
-      id="3"
+      id="services"
     >
       <div
         class="grid col-content py-32"
@@ -188,17 +188,17 @@ exports[`renders homepage unchanged 1`] = `
           style="opacity: 0; transform: translateY(50%);"
         >
           <p
-            class="font-bold text-xl uppercase pb-4 text-black"
+            class="font-bold text-xl uppercase pb-4 text-sky-700"
           >
             What We Do
           </p>
           <h2
-            class="text-center pb-8 text-5xl md:text-7xl text-white"
+            class="text-center pb-8 text-4xl md:text-6xl text-black"
           >
             We have everything you need to meet all your app and web development needs
           </h2>
           <hr
-            class="w-1/2 border-t border-sky-300"
+            class="w-1/2 border-t border-gray-300"
           />
         </div>
         <div
@@ -252,7 +252,7 @@ exports[`renders homepage unchanged 1`] = `
     </section>
     <section
       class="grid grid-cols-small md:grid-cols-main bg-gray-700"
-      id="4"
+      id="contact"
     >
       <div
         class="grid col-content py-32"
@@ -262,17 +262,17 @@ exports[`renders homepage unchanged 1`] = `
           style="opacity: 0; transform: translateY(50%);"
         >
           <p
-            class="font-bold text-xl uppercase pb-4 text-black"
+            class="font-bold text-xl uppercase pb-4 text-sky-500"
           >
             Contact Us
           </p>
           <h2
-            class="text-center pb-8 text-5xl md:text-7xl text-white"
+            class="text-center pb-8 text-4xl md:text-6xl text-white"
           >
             Reach out for a new project or just say hello
           </h2>
           <hr
-            class="w-1/2 border-t border-sky-300"
+            class="w-1/2 border-t border-gray-500"
           />
         </div>
         <div

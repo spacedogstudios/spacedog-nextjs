@@ -1,10 +1,8 @@
-"use client";
-
 import { CSSProperties } from "react";
 import Image from "next/image";
 import Section from "@/components/layout/Section";
 import type { SectionProps as Props } from "@/types/main";
-import { tvClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 export default function ServicesSection({
   id,
@@ -27,7 +25,7 @@ export default function ServicesSection({
   return (
     <Section
       id={id}
-      className={tvClassName(containerClassName, className)}
+      className={cn(containerClassName, className)}
       subheading={subheading}
       tagline={tagline}
     >
