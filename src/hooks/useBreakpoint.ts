@@ -1,20 +1,14 @@
 import { useMedia } from "react-use";
-import resolveConfig from "tailwindcss/resolveConfig";
 
-import tailwindConfig from "@/../tailwind.config";
-
-const fullConfig = resolveConfig(tailwindConfig);
-
-const breakpoints = fullConfig?.theme?.screens || {
-  xs: "480px",
-  sm: "640px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px",
+// Tailwind CSS v4 default breakpoints (see --breakpoint-* theme variables).
+const breakpoints = {
+  sm: "40rem",
+  md: "48rem",
+  lg: "64rem",
+  xl: "80rem",
+  "2xl": "96rem",
 };
 
-export function useBreakpoint<K extends string>(breakpointKey: K) {
-  const breakpointValue =
-    breakpoints[breakpointKey as keyof typeof breakpoints];
-  return useMedia(`(min-width: ${breakpointValue})`, false);
+export function useBreakpoint(breakpointKey: keyof typeof breakpoints) {
+  return useMedia(`(min-width: ${breakpoints[breakpointKey]})`, false);
 }

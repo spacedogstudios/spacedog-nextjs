@@ -3,12 +3,13 @@ import Footer from "@/components/layout/Footer";
 import Main from "@/components/layout/Main";
 import type { Content } from "@/types/main";
 import parseContent from "@/lib/parseContent";
-import { content, db } from "@/drizzle";
+import { content, getDb } from "@/drizzle";
 
-export const runtime = "edge";
+// Content lives in D1, so render on each request rather than at build time.
+export const dynamic = "force-dynamic";
 
 async function getContent() {
-  const rows = await db.select().from(content).all();
+  const rows = await getDb().select().from(content).all();
 
   if (rows && rows.length) return await parseContent(rows);
 }

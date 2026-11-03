@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`renders homepage unchanged 1`] = `
 <div>
   <header
-    class="grid grid-cols-small md:grid-cols-main bg-black bg-opacity-80 fixed top-0 left-0 right-0 z-10"
+    class="grid grid-cols-small md:grid-cols-main bg-black/80 fixed top-0 left-0 right-0 z-10"
   >
     <div
       class="col-gutter"
@@ -252,7 +252,7 @@ exports[`renders homepage unchanged 1`] = `
               </label>
               <input
                 autocomplete="name"
-                class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-none focus:border-b focus:border-sky-700  h-20 mb-4 border-gray-200"
+                class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-hidden focus:border-b focus:border-sky-700  h-20 mb-4 border-gray-200"
                 id="name"
                 name="name"
                 placeholder="Your name"
@@ -265,7 +265,7 @@ exports[`renders homepage unchanged 1`] = `
               </label>
               <input
                 autocomplete="email"
-                class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-none focus:border-b focus:border-sky-700  h-20 mb-10 border-gray-200"
+                class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-hidden focus:border-b focus:border-sky-700  h-20 mb-10 border-gray-200"
                 id="email"
                 name="email"
                 placeholder="Your email"
@@ -278,7 +278,7 @@ exports[`renders homepage unchanged 1`] = `
                 message
               </label>
               <textarea
-                class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-none focus:border-b focus:border-sky-700 pb-8 mb-8 border-gray-200"
+                class="block w-full appearance-none leading-8 text-lg text-gray-200   bg-transparent border-b outline-hidden focus:border-b focus:border-sky-700 pb-8 mb-8 border-gray-200"
                 id="message"
                 name="message"
                 placeholder="Your message"

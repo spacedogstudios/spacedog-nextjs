@@ -1,0 +1,8 @@
+# Copy to .dev.vars (git-ignored) for local development.
+# Get MAIL_API_KEY from https://resend.com/api-keys. MAIL_TO must be an
+# address on a domain verified in Resend, since it's also used as "from".
+MAIL_API_KEY=re_xxxxxxxx
+MAIL_TO=you@spacedog.com.au
+
+# To test the error notification locally, use an invalid key, e.g.
+# MAIL_API_KEY=invalid

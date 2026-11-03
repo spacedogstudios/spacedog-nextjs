@@ -15,7 +15,7 @@ export default function NavDesktop({
     <ul role="menubar" className={tvClassName(containerClassName, className)}>
       {routes.map(({ id, title, href }) => {
         const handleClick = () => {
-          lenis && lenis.scrollTo(href);
+          lenis?.scrollTo(href);
         };
 
         return (

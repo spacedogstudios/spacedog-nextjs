@@ -21,7 +21,7 @@ type FetchResponse = Response & {
 const messageClass = tv({ base: "text-xl text-red-500 pb-4 -mt-2" });
 const inputClass =
   "block w-full appearance-none leading-8 text-lg text-gray-200 \
-  bg-transparent border-b outline-none focus:border-b focus:border-sky-700";
+  bg-transparent border-b outline-hidden focus:border-b focus:border-sky-700";
 
 function Message(
   message: ReactNode,

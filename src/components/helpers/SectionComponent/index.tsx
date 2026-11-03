@@ -1,25 +1,13 @@
-import { ElementType, ComponentPropsWithRef, forwardRef } from "react";
 import type { SectionProps as ChildProps } from "@/types/main";
 import type { Route } from "@/globals/routes";
 
-type SectionOwnProps = ChildProps & {
+type SectionProps = ChildProps & {
   route: Route;
 };
 
-type SectionProps<E extends ElementType> = SectionOwnProps &
-  Omit<ComponentPropsWithRef<E>, keyof SectionOwnProps>;
+// React 19 passes `ref` as a regular prop, so no forwardRef is needed.
+export default function Section({ route, ...props }: SectionProps) {
+  const Component = route.component;
 
-const Section = forwardRef(
-  <E extends ElementType>(
-    { route, ...props }: SectionProps<E>,
-    ref: ComponentPropsWithRef<E>["ref"],
-  ) => {
-    const Component = route.component;
-
-    return <Component {...props} ref={ref} />;
-  },
-);
-
-Section.displayName = "Section";
-
-export default Section;
+  return <Component {...props} />;
+}

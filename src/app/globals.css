@@ -1,3 +1,46 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --grid-template-columns-main: 48px [gutter-start] auto [content-start]
+    minmax(auto, 1024px) [content-end] auto [gutter-end] 48px;
+  --grid-template-columns-small: 24px [gutter-start] auto [content-start]
+    minmax(auto, 1024px) [content-end] auto [gutter-end] 24px;
+  --grid-template-columns-services: 5rem 1fr;
+
+  --grid-column-gutter: gutter;
+  --grid-column-content: content;
+
+  --z-index--10: -10;
+  --z-index--20: -20;
+
+  --animate-toast-in: toast-in 200ms ease-out;
+
+  @keyframes toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
