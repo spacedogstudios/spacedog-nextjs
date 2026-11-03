@@ -6,6 +6,7 @@ import {
   LazyMotion,
   domAnimation,
   AnimatePresence,
+  useReducedMotion,
   m as motion,
 } from "framer-motion";
 import { Squash as Hamburger } from "hamburger-react";
@@ -20,6 +21,7 @@ export default function NavMobile({
   const [isOpen, setOpen] = useState(false);
   const ref = useRef(null);
   const lenis = useLenis();
+  const prefersReducedMotion = useReducedMotion() ?? false;
   const containerClassName = "lg:hidden flex items-center";
 
   useClickAway(ref, () => setOpen(false));
@@ -27,7 +29,13 @@ export default function NavMobile({
   return (
     <LazyMotion features={domAnimation}>
       <div ref={ref} className={tvClassName(containerClassName, className)}>
-        <Hamburger toggled={isOpen} size={24} color="white" toggle={setOpen} />
+        <Hamburger
+          toggled={isOpen}
+          size={24}
+          color="white"
+          toggle={setOpen}
+          label="Menu"
+        />
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -37,11 +45,11 @@ export default function NavMobile({
               transition={{ duration: 0.2 }}
               className="fixed right-0 top-16 h-screen overflow-hidden bg-black/80 w-72 z-20"
             >
-              <ul role="menubar">
+              <ul>
                 {routes.map(({ id, title, href }, idx) => {
                   const handleClick = () => {
                     setOpen(false);
-                    lenis?.scrollTo(href);
+                    lenis?.scrollTo(href, { immediate: prefersReducedMotion });
                   };
 
                   return (
@@ -55,7 +63,6 @@ export default function NavMobile({
                         delay: 0.1 + idx / 10,
                       }}
                       key={id}
-                      role="menuitem"
                       className="border-b border-gray-200 hover:border-sky-700 active:border-sky-700"
                     >
                       <a

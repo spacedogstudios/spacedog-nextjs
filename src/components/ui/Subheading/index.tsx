@@ -62,7 +62,7 @@ export default function SectionTitle({
       viewport={{ once: true }}
       className={tvClassName(containerClassName, className)}
     >
-      <h1 className={subheadingSlot()}>{subheading}</h1>
+      <p className={subheadingSlot()}>{subheading}</p>
       <h2 className={taglineSlot()}>{tagline}</h2>
       <hr className={separatorSlot()} />
     </motion.div>

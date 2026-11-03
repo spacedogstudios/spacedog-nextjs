@@ -2,6 +2,7 @@
 
 import { routes } from "@/globals/routes";
 import { useLenis } from "lenis/react";
+import { useReducedMotion } from "framer-motion";
 import { tvClassName } from "@/lib/utils";
 import { ComponentPropsWithoutRef } from "react";
 
@@ -9,17 +10,18 @@ export default function NavDesktop({
   className,
 }: ComponentPropsWithoutRef<"ul">) {
   const lenis = useLenis();
+  const prefersReducedMotion = useReducedMotion() ?? false;
   const containerClassName = "hidden lg:flex lg:items-center gap-5 text-sm";
 
   return (
-    <ul role="menubar" className={tvClassName(containerClassName, className)}>
+    <ul className={tvClassName(containerClassName, className)}>
       {routes.map(({ id, title, href }) => {
         const handleClick = () => {
-          lenis?.scrollTo(href);
+          lenis?.scrollTo(href, { immediate: prefersReducedMotion });
         };
 
         return (
-          <li key={id} role="menuitem">
+          <li key={id}>
             <a
               href={href}
               onClick={handleClick}

@@ -2,7 +2,12 @@
 
 import { useRef, CSSProperties } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { SECTION_ID } from "@/globals/sections";
 import type { SectionProps as Props } from "@/types/main";
 import { starsDataUrl } from "@/globals/base64";
@@ -22,6 +27,8 @@ export default function HomeSection({ className, tagline }: Props) {
   });
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "150%"]);
+  // Scroll-linked parallax isn't covered by MotionConfig's reducedMotion.
+  const parallax = !useReducedMotion();
 
   return (
     <section
@@ -32,7 +39,7 @@ export default function HomeSection({ className, tagline }: Props) {
       <motion.div
         className="absolute inset-0 bg-cover bg-bottom"
         style={{
-          y: backgroundY,
+          y: parallax ? backgroundY : 0,
           // Tiny blurred preview shown until the full image loads.
           backgroundImage: `url(${starsDataUrl})`,
         }}
@@ -54,7 +61,7 @@ export default function HomeSection({ className, tagline }: Props) {
         </picture>
       </motion.div>
       <motion.h1
-        style={{ y: textY }}
+        style={{ y: parallax ? textY : 0 }}
         className="grid col-content text-white text-4xl md:text-6xl relative max-w-4xl pb-36"
       >
         {tagline}
