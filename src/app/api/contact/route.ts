@@ -1,76 +1,79 @@
 import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { escapeUTF8 } from "entities";
-import { contactSchema } from "@/globals/schema";
+import { contactSchema, type ContactResponse } from "@/globals/schema";
 
-type FetchError = Error & {
-  statusCode?: number;
-};
+function errorResponse(message: string, status: number) {
+  return NextResponse.json<ContactResponse>(
+    { errors: { root: { message } } },
+    { status },
+  );
+}
 
 export async function POST(request: Request) {
-  const body: unknown = await request.json();
+  const body: unknown = await request.json().catch(() => null);
+  if (body === null) return errorResponse("Invalid request", 400);
 
   const result = contactSchema.safeParse(body);
 
-  let zodErrors = {};
   if (!result.success) {
-    result.error.issues.forEach((issue) => {
-      zodErrors = { ...zodErrors, [issue.path[0]]: { message: issue.message } };
-    });
-
-    return NextResponse.json({ errors: zodErrors });
+    const errors: ContactResponse["errors"] = {};
+    for (const issue of result.error.issues) {
+      const field = (issue.path[0] ?? "root") as keyof typeof errors;
+      errors[field] ??= { message: issue.message };
+    }
+    return NextResponse.json<ContactResponse>({ errors }, { status: 400 });
   }
 
-  const { name, email, message } = result.data;
+  const { name, email, message, website } = result.data;
+
+  // Bots that fill in the hidden field get a success response but no email.
+  if (website) return NextResponse.json<ContactResponse>({ success: true });
+
   const env = getCloudflareContext().env;
 
-  const emailBody = `Name: ${escapeUTF8(name)}\nEmail: ${escapeUTF8(email)}\nMessage: ${escapeUTF8(message)}`;
+  const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
+  const { success: withinLimit } = await env.CONTACT_RATE_LIMITER.limit({
+    key: ip,
+  });
+  if (!withinLimit) {
+    return errorResponse(
+      "Too many messages sent. Please wait a minute and try again",
+      429,
+    );
+  }
 
-  const data = {
-    from: env.MAIL_TO,
-    to: [env.MAIL_TO],
-    reply_to: email,
-    subject: "Space Dog Contact Form",
-    text: emailBody,
-  };
+  if (!env.MAIL_API_URL) {
+    console.error("MAIL_API_URL is not set");
+    return errorResponse("Sorry, your message couldn't be sent", 500);
+  }
 
-  const options = {
+  const response = await fetch(env.MAIL_API_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + env.MAIL_API_KEY,
     },
-    body: JSON.stringify(data),
-  };
+    body: JSON.stringify({
+      from: env.MAIL_TO,
+      to: [env.MAIL_TO],
+      reply_to: email,
+      subject: "Space Dog Contact Form",
+      // Plain text, so no HTML escaping is needed.
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+    }),
+  }).catch((error: unknown) => {
+    console.error("Email service request failed:", error);
+    return null;
+  });
 
-  try {
-    const url = env.MAIL_API_URL;
-    if (!url) throw new Error("No email service defined.");
-
-    const response = await fetch(url, options);
-    if (!response.ok) {
+  if (!response?.ok) {
+    if (response) {
       console.error(
         `Email service responded ${response.status}: ${await response.text()}`,
       );
-      const serviceError: FetchError = new Error(
-        "Sorry, your message couldn't be sent",
-      );
-      serviceError.statusCode = 502;
-      throw serviceError;
     }
-
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    const fetchError = error as FetchError;
-    return NextResponse.json(
-      {
-        errors: {
-          root: {
-            message: fetchError.message || "An unknown error has occurred",
-          },
-        },
-      },
-      { status: fetchError.statusCode || 500 },
-    );
+    return errorResponse("Sorry, your message couldn't be sent", 502);
   }
+
+  return NextResponse.json<ContactResponse>({ success: true });
 }

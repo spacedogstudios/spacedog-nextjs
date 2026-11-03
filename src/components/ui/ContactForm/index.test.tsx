@@ -138,6 +138,33 @@ describe("ContactSection", () => {
     expect(await screen.findByRole("status")).toHaveTextContent("Message sent");
   });
 
+  it("should show server-side field errors", async () => {
+    fetchMock.mockResponseOnce(
+      JSON.stringify({
+        errors: { email: { message: "Please enter a valid email address" } },
+      }),
+      { status: 400 },
+    );
+    render(<ContactForm />);
+
+    fireEvent.input(screen.getByLabelText("name"), {
+      target: { value: "name" },
+    });
+    fireEvent.input(screen.getByLabelText("email"), {
+      target: { value: "test@mail.com" },
+    });
+    fireEvent.input(screen.getByLabelText("message"), {
+      target: { value: "message" },
+    });
+
+    fireEvent.submit(screen.getByRole("button", { name: "Submit" }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      "Please enter a valid email address",
+    );
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+  });
+
   it("should show an error notification and keep values when sending fails", async () => {
     fetchMock.mockResponseOnce(
       JSON.stringify({

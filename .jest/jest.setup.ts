@@ -11,6 +11,7 @@ sqlite.exec(readFileSync("src/migrations/schema.sql", "utf8"));
 
 const mockEnv = {
   DB: new D1Database(new D1DatabaseAPI(sqlite)),
+  CONTACT_RATE_LIMITER: { limit: async () => ({ success: true }) },
   MAIL_API_URL: "https://api.resend.com/emails",
   MAIL_API_KEY: "test",
   MAIL_TO: "test@example.com",
