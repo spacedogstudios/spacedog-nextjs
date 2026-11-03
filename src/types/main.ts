@@ -1,7 +1,8 @@
 import type { ComponentPropsWithRef, ReactElement } from "react";
-import { SectionId } from "@/globals/sections";
+import type { SectionId } from "@/globals/sections";
+import type { ContentRow } from "@/drizzle/schema";
 
-export type Content = Omit<ContentRowt, "id"> & {
+export type Content = Omit<ContentRow, "id"> & {
   id: SectionId;
   jsx?: ReactElement[];
 };

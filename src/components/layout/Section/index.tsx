@@ -21,8 +21,8 @@ export default function Section({
           <Subheading
             id={id}
             className="pb-8"
-            subheading={String(subheading)}
-            tagline={String(tagline)}
+            subheading={subheading}
+            tagline={tagline}
           />
         )}
         {children && (
