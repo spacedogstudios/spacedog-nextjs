@@ -11,9 +11,6 @@ export default function Footer({
     <footer className={tvClassName(containerClassName, className)}>
       <div className="col-gutter flex flex-row flex-wrap py-8 justify-center gap-x-12 gap-y-4 sm:gap-x-24">
         <p className={paragraphClass}>© Space Dog Studios</p>
-        <p className={paragraphClass}>
-          Design inspired by <a href="https://www.colorlib.com/">Colorlib</a>
-        </p>
       </div>
     </footer>
   );
