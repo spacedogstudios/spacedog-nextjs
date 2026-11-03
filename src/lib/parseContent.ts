@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { Fragment, ReactElement, createElement } from "react";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
@@ -26,7 +26,7 @@ async function markdownToReact(item: ContentRow): Promise<ReactElement[]> {
   if (item.body) {
     const body = JSON.parse(item.body);
 
-    for (const bodyText of body) {
+    for (const [index, bodyText] of body.entries()) {
       const file = await unified()
         .use(remarkParse)
         .use(remarkRehype)
@@ -34,7 +34,9 @@ async function markdownToReact(item: ContentRow): Promise<ReactElement[]> {
         .use(rehypeReact, production)
         .process(bodyText);
 
-      jsx.push(file.result);
+      // Keyed because this array is passed to client components as a prop,
+      // and React checks element arrays for keys when serializing them.
+      jsx.push(createElement(Fragment, { key: index }, file.result));
     }
   }
 
